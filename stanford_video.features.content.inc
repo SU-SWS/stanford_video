@@ -6,17 +6,13 @@
 function stanford_video_content_default_fields() {
   $fields = array();
 
-  // Exported field: field_caption
-  $fields['stanford_video-field_caption'] = array(
-    'field_name' => 'field_caption',
+  // Exported field: field_stanford_video_caption
+  $fields['stanford_video-field_stanford_video_caption'] = array(
+    'field_name' => 'field_stanford_video_caption',
     'type_name' => 'stanford_video',
     'display_settings' => array(
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
-      ),
-      '5' => array(
-        'format' => 'default',
         'exclude' => 0,
       ),
       'teaser' => array(
@@ -28,14 +24,6 @@ function stanford_video_content_default_fields() {
         'exclude' => 0,
       ),
       '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -55,29 +43,83 @@ function stanford_video_content_default_fields() {
     'description_field' => '0',
     'widget' => array(
       'file_extensions' => 'xml srt',
-      'file_path' => 'media/[site-date][uid]',
+      'file_path' => '',
       'progress_indicator' => 'bar',
       'max_filesize_per_file' => '',
       'max_filesize_per_node' => '',
-      'label' => 'Caption file',
-      'weight' => '1',
+      'label' => 'Caption File',
+      'weight' => '-3',
       'description' => 'To upload a video to the system, you MUST have a timestamped transcript associated to your video; you will receive an error message otherwise.  Video post-production assistance and transcript generation can be found at <a href="http://captioning.stanford.edu">http://captioning.stanford.edu</a>',
       'type' => 'filefield_widget',
       'module' => 'filefield',
     ),
   );
 
-  // Exported field: field_media
-  $fields['stanford_video-field_media'] = array(
-    'field_name' => 'field_media',
+  // Exported field: field_stanford_video_keyframe
+  $fields['stanford_video-field_stanford_video_keyframe'] = array(
+    'field_name' => 'field_stanford_video_keyframe',
     'type_name' => 'stanford_video',
     'display_settings' => array(
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
       ),
-      '5' => array(
-        'format' => 'default',
+      'teaser' => array(
+        'format' => 'image_plain',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'image_plain',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'image_plain',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'image_plain',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'filefield',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'filefield',
+    'active' => '1',
+    'list_field' => '0',
+    'list_default' => 1,
+    'description_field' => '0',
+    'widget' => array(
+      'file_extensions' => 'png gif jpg jpeg',
+      'file_path' => '',
+      'progress_indicator' => 'bar',
+      'max_filesize_per_file' => '',
+      'max_filesize_per_node' => '',
+      'max_resolution' => '640x480',
+      'min_resolution' => '320x240',
+      'alt' => 'user-uploaded image',
+      'custom_alt' => 0,
+      'title' => '',
+      'custom_title' => 0,
+      'title_type' => 'textfield',
+      'default_image' => NULL,
+      'use_default_image' => 0,
+      'label' => 'Keyframe',
+      'weight' => '-2',
+      'description' => 'Optionally, upload an image to be displayed before the video starts playing. If you do not provide an image, the default image is the Stanford tree logo.',
+      'type' => 'imagefield_widget',
+      'module' => 'imagefield',
+    ),
+  );
+
+  // Exported field: field_stanford_video_media
+  $fields['stanford_video-field_stanford_video_media'] = array(
+    'field_name' => 'field_stanford_video_media',
+    'type_name' => 'stanford_video',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
         'exclude' => 0,
       ),
       'teaser' => array(
@@ -89,14 +131,6 @@ function stanford_video_content_default_fields() {
         'exclude' => 0,
       ),
       '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -116,29 +150,25 @@ function stanford_video_content_default_fields() {
     'description_field' => '0',
     'widget' => array(
       'file_extensions' => 'flv m4v mp4 mp3',
-      'file_path' => 'media/[site-date][uid]',
+      'file_path' => '',
       'progress_indicator' => 'bar',
       'max_filesize_per_file' => '',
       'max_filesize_per_node' => '',
-      'label' => 'Media file',
-      'weight' => '-1',
-      'description' => '',
+      'label' => 'Media File',
+      'weight' => '-2',
+      'description' => 'Choose to upload a video here <strong>or</strong> enter the URL of a remotely-hosted video in the field below.',
       'type' => 'filefield_widget',
       'module' => 'filefield',
     ),
   );
 
-  // Exported field: field_remote
-  $fields['stanford_video-field_remote'] = array(
-    'field_name' => 'field_remote',
+  // Exported field: field_stanford_video_remote
+  $fields['stanford_video-field_stanford_video_remote'] = array(
+    'field_name' => 'field_stanford_video_remote',
     'type_name' => 'stanford_video',
     'display_settings' => array(
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
-      ),
-      '5' => array(
-        'format' => 'default',
         'exclude' => 0,
       ),
       'teaser' => array(
@@ -150,14 +180,6 @@ function stanford_video_content_default_fields() {
         'exclude' => 0,
       ),
       '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -182,7 +204,7 @@ function stanford_video_content_default_fields() {
       'default_value' => array(
         '0' => array(
           'value' => '',
-          '_error_element' => 'default_value_widget][field_remote][0][value',
+          '_error_element' => 'default_value_widget][field_stanford_video_remote][0][value',
         ),
       ),
       'default_value_php' => NULL,
@@ -194,105 +216,15 @@ function stanford_video_content_default_fields() {
     ),
   );
 
-  // Exported field: field_sort_weight
-  $fields['stanford_video-field_sort_weight'] = array(
-    'field_name' => 'field_sort_weight',
-    'type_name' => 'stanford_video',
-    'display_settings' => array(
-      'weight' => '1',
-      'parent' => '',
-      'label' => array(
-        'format' => 'hidden',
-      ),
-      'teaser' => array(
-        'format' => 'hidden',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'hidden',
-        'exclude' => 0,
-      ),
-      '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'number_integer',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'number',
-    'active' => '1',
-    'prefix' => '',
-    'suffix' => '',
-    'min' => '',
-    'max' => '',
-    'allowed_values' => '-10
--9
--8
--7
--6
--5
--4
--3
--2
--1
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'default_value' => array(
-        '0' => array(
-          'value' => '0',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Sort weight',
-      'weight' => '12',
-      'description' => '',
-      'type' => 'optionwidgets_select',
-      'module' => 'optionwidgets',
-    ),
-  );
-
-  // Exported field: field_summary
-  $fields['stanford_video-field_summary'] = array(
-    'field_name' => 'field_summary',
+  // Exported field: field_stanford_video_resolution
+  $fields['stanford_video-field_stanford_video_resolution'] = array(
+    'field_name' => 'field_stanford_video_resolution',
     'type_name' => 'stanford_video',
     'display_settings' => array(
       'label' => array(
         'format' => 'above',
         'exclude' => 0,
       ),
-      '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
       'teaser' => array(
         'format' => 'default',
         'exclude' => 0,
@@ -302,80 +234,6 @@ function stanford_video_content_default_fields() {
         'exclude' => 0,
       ),
       '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'text',
-    'required' => '1',
-    'multiple' => '0',
-    'module' => 'text',
-    'active' => '1',
-    'text_processing' => '1',
-    'max_length' => '',
-    'allowed_values' => '',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'rows' => '5',
-      'size' => 60,
-      'default_value' => array(
-        '0' => array(
-          'value' => '',
-          '_error_element' => 'default_value_widget][field_summary][0][value',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Video summary',
-      'weight' => '4',
-      'description' => '',
-      'type' => 'text_textarea',
-      'module' => 'text',
-    ),
-  );
-
-  // Exported field: field_videocols
-  $fields['stanford_video-field_videocols'] = array(
-    'field_name' => 'field_videocols',
-    'type_name' => 'stanford_video',
-    'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      '5' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '3' => array(
         'format' => 'default',
         'exclude' => 0,
       ),
@@ -397,18 +255,20 @@ function stanford_video_content_default_fields() {
     'allowed_values' => '2|320 X 240
 3|480 X 320
 4|640 X 360
-5|640 X 480 ',
+5|640 X 480',
     'allowed_values_php' => '',
     'widget' => array(
       'default_value' => array(
         '0' => array(
-          'value' => '3',
+          'value' => '',
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Video width',
-      'weight' => '3',
-      'description' => '',
+      'label' => 'Video Resolution',
+      'weight' => '-1',
+      'description' => '<p>Choose one of 4 different video sizes: 480 X 320 (*), 320 X 240, 640 X 360 and 640 X 480. It is highly recommended that you ensure that your video matches one of these size formats - if not, the player will re-size your video to the view-port selected, and may result in a degradation of quality.  (The player also allows for full screen viewing of the video)</p>
+
+<p>(* The 480 X 320 view-port is the default size provided by the Stanford Captioning Service, and has been designed to occupy the center of the page in a 1-3-1 layout. This is probably the most commonly-used size.)</p>',
       'type' => 'optionwidgets_buttons',
       'module' => 'optionwidgets',
     ),
@@ -416,12 +276,11 @@ function stanford_video_content_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Caption file');
-  t('Media file');
+  t('Caption File');
+  t('Keyframe');
+  t('Media File');
   t('Remotely Hosted Video File');
-  t('Sort weight');
-  t('Video summary');
-  t('Video width');
+  t('Video Resolution');
 
   return $fields;
 }

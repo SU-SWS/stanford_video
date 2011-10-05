@@ -1,21 +1,22 @@
 <?php 
 $allowed_tags = array('img', 'p', 'a', 'em', 'strong', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'div');
-$media = filter_xss($node->field_media[0]['filepath'], $allowed_tags);
-$caption = filter_xss($node->field_caption[0]['filepath'], $allowed_tags);
-$remote = filter_xss($node->field_remote[0]['view'], $allowed_tags);
-$videocols = filter_xss($node->field_videocols[0]['view'], $allowed_tags);
-$summary = filter_xss($node->field_summary[0]['view'], $allowed_tags);
-$keyframe = filter_xss($node->field_keyframe[0]['filepath'], $allowed_tags);
+$media = filter_xss($node->field_stanford_video_media[0]['filepath'], $allowed_tags);
+$caption = filter_xss($node->field_stanford_video_caption[0]['filepath'], $allowed_tags);
+$remote = filter_xss($node->field_stanford_video_remote[0]['view'], $allowed_tags);
+$videocols = filter_xss($node->field_stanford_video_resolution[0]['view'], $allowed_tags);
+$keyframe = filter_xss($node->field_stanford_video_keyframe[0]['filepath'], $allowed_tags);
 $basepath = base_path();
 $filepath = file_directory_path();
- ?>
+//kpr($node);
+?>
  <script type="text/javascript" src="<?php print $basepath.$filepath; ?>/media/swfobject.js"></script>
 <script type="text/javascript">
 	swfobject.registerObject("player","9.0.98","expressInstall.swf");
 </script>
 
 <?php
-  if ($videocols == '480 X 320'){
+
+if ($videocols == '480 X 320'){
     $output = "<div style=\"width: 480px; margin:auto; margin-bottom:2em;\"><object id=\"player\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" name=\"player\" width=\"480\" height=\"340\"><param name=\"movie\" value=\"";
     $output .= $basepath.$filepath;
     $output .= "/media/player.swf\" /><param name=\"allowfullscreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" />";
@@ -37,7 +38,7 @@ $filepath = file_directory_path();
   }				
   else {
     $output = t("I'm sorry, something has gone terribly wrong. ");
-    $output .= l(t("Please contact the webmaster.", "contact"));
+    $output .= l(t("Please contact the webmaster. "), "contact");
   }
   echo $output;
   print"<param name=\"flashvars\" value=\"file=";
@@ -77,7 +78,7 @@ print"\" />";
   }				
   else {
     $output = t("I'm sorry, something has gone terribly wrong. ");
-    $output .= l(t("Please contact the webmaster.", "contact"));
+    $output .= l(t("Please contact the webmaster."), "contact");
   }
   echo $output;
 
@@ -93,7 +94,8 @@ if ($keyframe !=null){
 else {			
 	print"&amp;image=http://studentaffairs.stanford.edu/sites/default/files/media/poster.png&amp;captions=";}
 print $basepath.$caption;
-print "\" />";
+print "\" />"; 
+
 print"<p><a href=\"http://get.adobe.com/flashplayer\">Get the Adobe Flash Player</a> to view this presentation.</p></object></div></object></div>"; 
 
 print $node->content['body']['#value'];

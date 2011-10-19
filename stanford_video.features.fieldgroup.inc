@@ -15,11 +15,10 @@ function stanford_video_fieldgroup_default_groups() {
     'settings' => array(
       'form' => array(
         'style' => 'fieldset',
-        'description' => '',
+        'description' => 'Choose either a remotely hosted file <strong>or</strong> upload your own video file',
       ),
       'display' => array(
         'description' => '',
-        'label' => 'above',
         'teaser' => array(
           'format' => 'fieldset',
           'exclude' => 0,
@@ -36,6 +35,7 @@ function stanford_video_fieldgroup_default_groups() {
           'format' => 'fieldset',
           'exclude' => 0,
         ),
+        'label' => 'above',
       ),
     ),
     'weight' => '-4',

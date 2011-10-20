@@ -14,3 +14,10 @@ function stanford_video_help($path, $arg) {
       return $output;
   }
 }
+
+/*
+ * Implementation of hook_theme_registry_alter().
+ */
+function stanford_video_theme_registry_alter(&$theme_registry) {
+  $theme_registry['content_field']['theme paths'][] = drupal_get_path('module', 'stanford_video');
+}

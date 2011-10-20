@@ -11,7 +11,7 @@ function stanford_video_content_default_fields() {
     'field_name' => 'field_stanford_video_caption',
     'type_name' => 'stanford_video',
     'display_settings' => array(
-      'weight' => '-3',
+      'weight' => '-1',
       'parent' => '',
       'label' => array(
         'format' => 'above',
@@ -66,7 +66,7 @@ function stanford_video_content_default_fields() {
     'field_name' => 'field_stanford_video_keyframe',
     'type_name' => 'stanford_video',
     'display_settings' => array(
-      'weight' => '-2',
+      'weight' => '1',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
@@ -130,17 +130,17 @@ function stanford_video_content_default_fields() {
     'field_name' => 'field_stanford_video_media',
     'type_name' => 'stanford_video',
     'display_settings' => array(
-      'weight' => '-2',
+      'weight' => '-3',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
       ),
       'teaser' => array(
-        'format' => 'hidden',
+        'format' => 'default',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'hidden',
+        'format' => 'default',
         'exclude' => 0,
       ),
       '4' => array(
@@ -185,17 +185,17 @@ function stanford_video_content_default_fields() {
     'field_name' => 'field_stanford_video_remote',
     'type_name' => 'stanford_video',
     'display_settings' => array(
-      'weight' => 0,
+      'weight' => '-2',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
       ),
       'teaser' => array(
-        'format' => 'hidden',
+        'format' => 'default',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'hidden',
+        'format' => 'default',
         'exclude' => 0,
       ),
       '4' => array(
@@ -240,7 +240,7 @@ function stanford_video_content_default_fields() {
     'field_name' => 'field_stanford_video_resolution',
     'type_name' => 'stanford_video',
     'display_settings' => array(
-      'weight' => '-1',
+      'weight' => '2',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',

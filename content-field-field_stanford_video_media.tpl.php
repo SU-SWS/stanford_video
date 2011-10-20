@@ -29,12 +29,16 @@
 $allowed_tags = array('img', 'p', 'a', 'em', 'strong', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'div');
 $media = filter_xss($node->field_stanford_video_media[0]['filepath'], $allowed_tags);
 $caption = filter_xss($node->field_stanford_video_caption[0]['filepath'], $allowed_tags);
-$remote = filter_xss($node->field_stanford_video_remote[0]['view'], $allowed_tags);
+$remote = filter_xss($node->field_stanford_video_remote[0]['safe'], $allowed_tags);
 $videocols = filter_xss($node->field_stanford_video_resolution[0]['value'], $allowed_tags);
 $keyframe = filter_xss($node->field_stanford_video_keyframe[0]['filepath'], $allowed_tags);
 $basepath = base_path();
 $filepath = file_directory_path();
 $stanford_video_path = url(drupal_get_path('module', 'stanford_video'));
+preg_match('/[^\/]*.flv/', $remote, $matches);
+$splits = preg_split('/\/[^\/]*.flv/', $remote);
+$remote_streamer = $splits[0];
+$remote_file = $matches[0];
 ?>
  <script type="text/javascript" src="<?php print $stanford_video_path; ?>/media/swfobject.js"></script>
 <script type="text/javascript">
@@ -50,7 +54,7 @@ if ($videocols == 1){
     $output .= "/media/player.swf\" /><param name=\"allowfullscreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" />";
   }
   elseif ($videocols == 2){
-    $output = "<div style=\"width: 320px; float:right; margin-left:1em; margin-right:1em;\"><object id=\"player\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" name=\"player\" width=\"320\" height=\"240\"><param name=\"movie\" value=\"";
+    $output = "<div style=\"width: 320px; margin-left:1em; margin-right:1em;\"><object id=\"player\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" name=\"player\" width=\"320\" height=\"240\"><param name=\"movie\" value=\"";
     $output .= $stanford_video_path;
     $output .= "/media/player.swf\" /><param name=\"allowfullscreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" />";
   }			
@@ -72,7 +76,7 @@ if ($videocols == 1){
   print"<param name=\"flashvars\" value=\"file=";
 
   if ($remote != null){
-    print $remote;
+    print $remote_file ."&amp;streamer=". $remote_streamer;
   }
   else {
     print $basepath.$media;
@@ -90,7 +94,7 @@ print"\" />";
     $output .= "/media/player.swf\" width=\"480\" height=\"340\"><param name=\"movie\" value=\"player.swf\" /><param name=\"allowfullscreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" />";
   }
   elseif ($videocols == 2){
-    $output = "<div style=\"width: 320px; float:right; margin-left:1em; margin-right:1em;\"><object type=\"application/x-shockwave-flash\" data=\"";
+    $output = "<div style=\"width: 320px; margin-left:1em; margin-right:1em;\"><object type=\"application/x-shockwave-flash\" data=\"";
     $output .= $stanford_video_path;
     $output .= "/media/player.swf\" width=\"320\" height=\"240\"><param name=\"movie\" value=\"player.swf\" /><param name=\"allowfullscreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" />";
   }			
@@ -112,7 +116,8 @@ print"\" />";
 
 print "<param name=\"flashvars\" value=\"file=";
 if ($remote != null){
-		print $remote; }
+    print $remote_file ."&amp;streamer=". $remote_streamer;
+}
 else {
 		print $basepath.$media;
 	}

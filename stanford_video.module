@@ -22,6 +22,7 @@ function stanford_video_help($path, $arg) {
 
 /*
  * Implementation of hook_theme_registry_alter().
+ * Tell Drupal to look in the module directory for a CCK field template file (content-field.tpl.php).
  */
 function stanford_video_theme_registry_alter(&$theme_registry) {
   $theme_registry['content_field']['theme paths'][] = drupal_get_path('module', 'stanford_video');

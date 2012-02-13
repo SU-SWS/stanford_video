@@ -42,9 +42,21 @@ $remote_file = $matches[0];
 ?>
  <script type="text/javascript" src="<?php print $stanford_video_path; ?>/media/jwplayer.js"></script>
 
-<?php
 
-?>
+<video 
+    src="/videos/video.mp4" 
+    height="270" 
+    id="container" 
+    poster="/thumbs/image.jpg"
+    width="480">
+</video>
+
+<script type="text/javascript">
+    jwplayer("container").setup({
+        flashplayer: "/jwplayer/player.swf"
+    });
+</script>
+
 <?php
 
 /*

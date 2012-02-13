@@ -40,14 +40,14 @@ $splits = preg_split('/\/[^\/]*.flv/', $remote);
 $remote_streamer = $splits[0];
 $remote_file = $matches[0];
 ?>
- <script type="text/javascript" src="<?php print $stanford_video_path; ?>/media/swfobject.js"></script>
-<script type="text/javascript">
-	swfobject.registerObject("player","9.0.98","expressInstall.swf");
-</script>
+ <script type="text/javascript" src="<?php print $stanford_video_path; ?>/media/jwplayer.js"></script>
 
 <?php
 
+?>
+<?php
 
+/*
 if ($videocols == 1){
     $output = "<div style=\"width: 480px; margin:auto; margin-bottom:2em;\"><object id=\"player\" classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" name=\"player\" width=\"480\" height=\"340\"><param name=\"movie\" value=\"";
     $output .= $stanford_video_path;
@@ -131,8 +131,7 @@ print "\" />";
 
 print"<p><a href=\"http://get.adobe.com/flashplayer\">Get the Adobe Flash Player</a> to view this presentation.</p></object></div></object></div>"; 
 
-//print $node->content['body']['#value'];
-
+*/
  ?>
 
 <br class="clear" />

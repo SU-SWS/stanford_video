@@ -44,16 +44,22 @@ $remote_file = $matches[0];
 
 
 <video 
-    src="/videos/video.mp4" 
-    height="270" 
+    src="<?php print $basepath.$media; ?>" 
+    height="480"
+    width="640"
     id="container" 
-    poster="/thumbs/image.jpg"
-    width="480">
+    poster="<?php print $basepath.$keyframe; ?>"
+>
 </video>
 
 <script type="text/javascript">
     jwplayer("container").setup({
-        flashplayer: "/jwplayer/player.swf"
+        'flashplayer': "<?php print $stanford_video_path; ?>/media/player.swf",
+        'plugins': {
+          'captions-2': {
+            'file': "<?php print $basepath.$caption; ?>"
+          }
+        }
     });
 </script>
 

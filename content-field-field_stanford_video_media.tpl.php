@@ -39,10 +39,9 @@ preg_match('/[^\/]*.flv/', $remote, $matches);
 $splits = preg_split('/\/[^\/]*.flv/', $remote);
 $remote_streamer = $splits[0];
 $remote_file = $matches[0];
+drupal_add_js(drupal_get_path('module', 'stanford_video') . '/media/jwplayer.js');
 drupal_set_html_head('<meta http-equiv="Content-Type" content="video/mp4" />');
 ?>
- <script type="text/javascript" src="<?php print $stanford_video_path; ?>/media/jwplayer.js"></script>
-
 
 <video 
     src="<?php print $basepath.$media; ?>" 

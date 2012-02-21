@@ -119,7 +119,7 @@ function stanford_video_content_default_fields() {
       'insert_width' => NULL,
       'label' => 'Keyframe',
       'weight' => '1',
-      'description' => 'Optionally, upload an image to be displayed before the video starts playing. If you do not provide an image, the default image is the Stanford tree logo.',
+      'description' => 'Optionally, upload an image to be displayed before the video starts playing. If you do not provide an image, the default image is the Stanford seal.',
       'type' => 'imagefield_widget',
       'module' => 'imagefield',
     ),

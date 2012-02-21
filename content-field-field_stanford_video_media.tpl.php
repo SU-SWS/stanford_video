@@ -26,22 +26,49 @@
  */
 ?>
 <?php
+
 $allowed_tags = array('img', 'p', 'a', 'em', 'strong', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'div');
+
+// video upload file (.flv, .mp3, .mp4, .m4v)
 $media = filter_xss($node->field_stanford_video_media[0]['filepath'], $allowed_tags);
+
+// caption file (.srt, .xml)
 $caption = filter_xss($node->field_stanford_video_caption[0]['filepath'], $allowed_tags);
+
+// remote streaming URL
 $remote = filter_xss($node->field_stanford_video_remote[0]['safe'], $allowed_tags);
+
+/**
+ * CCK allowed values text field, set up in key/value pairs.
+ * 1|480x340, 2|320x240, 3|640x360, 4|640x480
+ */
 $video_resolution = filter_xss($node->field_stanford_video_resolution[0]['value'], $allowed_tags);
+
+// Keyframe upload file; defaults to captioning service .png
 $keyframe = filter_xss($node->field_stanford_video_keyframe[0]['filepath'], $allowed_tags);
 $keyframe_default = "http://captioning.stanford.edu/images/startimage.png";
+
+// Drupal base path
 $basepath = base_path();
+
+// Drupal file directory
 $filepath = file_directory_path();
+
+// Module path
 $stanford_video_path = url(drupal_get_path('module', 'stanford_video'));
+
+// Name of the file at the remote destination, e.g., "media.flv"
 preg_match('/[^\/]*.flv/', $remote, $matches);
+$remote_file = $matches[0];
+
+// URL to the streaming server group space, e.g., rtmp://sv-stream.stanford.edu/groupname
 $splits = preg_split('/\/[^\/]*.flv/', $remote);
 $remote_streamer = $splits[0];
-$remote_file = $matches[0];
+
 drupal_add_js(drupal_get_path('module', 'stanford_video') . '/media/jwplayer.js');
-drupal_set_html_head('<meta http-equiv="Content-Type" content="video/mp4" />');
+//drupal_set_html_head('<meta http-equiv="Content-Type" content="video/mp4" />');
+
+// Array of possible video window sizes to pass to JW Player
 $video_window_size = array();
 $video_window_size[1] = 'width="480" height="340"' . "\n";
 $video_window_size[2] = 'width="320" height="240"' . "\n";

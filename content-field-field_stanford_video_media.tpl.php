@@ -30,7 +30,7 @@ $allowed_tags = array('img', 'p', 'a', 'em', 'strong', 'ul', 'ol', 'li', 'dl', '
 $media = filter_xss($node->field_stanford_video_media[0]['filepath'], $allowed_tags);
 $caption = filter_xss($node->field_stanford_video_caption[0]['filepath'], $allowed_tags);
 $remote = filter_xss($node->field_stanford_video_remote[0]['safe'], $allowed_tags);
-$videocols = filter_xss($node->field_stanford_video_resolution[0]['value'], $allowed_tags);
+$video_resolution = filter_xss($node->field_stanford_video_resolution[0]['value'], $allowed_tags);
 $keyframe = filter_xss($node->field_stanford_video_keyframe[0]['filepath'], $allowed_tags);
 $keyframe_default = "http://captioning.stanford.edu/images/startimage.png";
 $basepath = base_path();
@@ -42,14 +42,18 @@ $remote_streamer = $splits[0];
 $remote_file = $matches[0];
 drupal_add_js(drupal_get_path('module', 'stanford_video') . '/media/jwplayer.js');
 drupal_set_html_head('<meta http-equiv="Content-Type" content="video/mp4" />');
+$video_window_size = array();
+$video_window_size[1] = 'width="480" height="340"' . "\n";
+$video_window_size[2] = 'width="320" height="240"' . "\n";
+$video_window_size[3] = 'width="640" height="360"' . "\n";
+$video_window_size[4] = 'width="640" height="480"' . "\n";
 ?>
 
 <video 
     src="<?php print $basepath.$media; ?>" 
-    height="480"
-    width="640"
+    <?php print $video_window_size[$video_resolution]; ?>
     id="container" 
-    poster="<?php if(isset($keyframe)) {print $basepath.$keyframe;} else {print 'http\://captioning.stanford.edu/images/startimage.png';} ?>"
+    poster="<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>"
 >
 </video>
 

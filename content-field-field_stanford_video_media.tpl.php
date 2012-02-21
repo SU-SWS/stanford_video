@@ -25,13 +25,14 @@
  * @see template_preprocess_content_field()
  */
 ?>
-<?php 
+<?php
 $allowed_tags = array('img', 'p', 'a', 'em', 'strong', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'div');
 $media = filter_xss($node->field_stanford_video_media[0]['filepath'], $allowed_tags);
 $caption = filter_xss($node->field_stanford_video_caption[0]['filepath'], $allowed_tags);
 $remote = filter_xss($node->field_stanford_video_remote[0]['safe'], $allowed_tags);
 $videocols = filter_xss($node->field_stanford_video_resolution[0]['value'], $allowed_tags);
 $keyframe = filter_xss($node->field_stanford_video_keyframe[0]['filepath'], $allowed_tags);
+$keyframe_default = "http://captioning.stanford.edu/images/startimage.png";
 $basepath = base_path();
 $filepath = file_directory_path();
 $stanford_video_path = url(drupal_get_path('module', 'stanford_video'));
@@ -48,13 +49,14 @@ drupal_set_html_head('<meta http-equiv="Content-Type" content="video/mp4" />');
     height="480"
     width="640"
     id="container" 
-    poster="<?php print $basepath.$keyframe; ?>"
+    poster="<?php if(isset($keyframe)) {print $basepath.$keyframe;} else {print 'http\://captioning.stanford.edu/images/startimage.png';} ?>"
 >
 </video>
 
 <script type="text/javascript">
     jwplayer("container").setup({
         'flashplayer': "<?php print $stanford_video_path; ?>/media/player.swf",
+        'image': "<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>",
         'plugins': {
           'captions-2': {
             'file': "<?php print $basepath.$caption; ?>"

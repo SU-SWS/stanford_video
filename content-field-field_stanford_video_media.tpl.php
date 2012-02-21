@@ -51,7 +51,7 @@ $keyframe_default = "http://captioning.stanford.edu/images/startimage.png";
 // Drupal base path
 $basepath = base_path();
 
-// Drupal file directory
+// Drupal file directory (e.g., sites/default/files)
 $filepath = file_directory_path();
 
 // Module path
@@ -77,7 +77,17 @@ $video_window_size[4] = 'width="640" height="480"' . "\n";
 ?>
 
 <video 
-    src="<?php print $basepath.$media; ?>" 
+    <?php
+      if(!empty($media)) { 
+        print("src=\"$basepath.$media\"");
+      }
+      elseif(!empty($remote)) {
+        print("src=\"$remote\"");
+      }
+      else {
+        print t("Something has gone terribly wrong.");
+      }
+    ?>
     <?php print $video_window_size[$video_resolution]; ?>
     id="container" 
     poster="<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>"
@@ -88,6 +98,7 @@ $video_window_size[4] = 'width="640" height="480"' . "\n";
     jwplayer("container").setup({
         'flashplayer': "<?php print $stanford_video_path; ?>/media/player.swf",
         'image': "<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>",
+        //'file': "<?php print $basepath.$media; ?>",
         'plugins': {
           'captions-2': {
             'file': "<?php print $basepath.$caption; ?>"

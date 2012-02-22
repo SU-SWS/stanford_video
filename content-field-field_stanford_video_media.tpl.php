@@ -24,9 +24,8 @@
  *
  * @see template_preprocess_content_field()
  */
-?>
-<?php
 
+// Define allowed tags
 $allowed_tags = array('img', 'p', 'a', 'em', 'strong', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'div');
 
 // video upload file (.flv, .mp3, .mp4, .m4v)
@@ -68,12 +67,19 @@ $remote_streamer = $splits[0];
 drupal_add_js(drupal_get_path('module', 'stanford_video') . '/media/jwplayer.js');
 //drupal_set_html_head('<meta http-equiv="Content-Type" content="video/mp4" />');
 
-// Array of possible video window sizes to pass to JW Player
+// Array of possible video window sizes to pass to HTML5 video tag
 $video_window_size = array();
 $video_window_size[1] = 'width="480" height="340"' . "\n";
 $video_window_size[2] = 'width="320" height="240"' . "\n";
 $video_window_size[3] = 'width="640" height="360"' . "\n";
 $video_window_size[4] = 'width="640" height="480"' . "\n";
+
+// Array of possible video window sizes to pass to JW Player
+$jw_video_window_size = array();
+$jw_video_window_size[1] = 'width: "480", height: "340",';
+$jw_video_window_size[2] = 'width: "320", height: "240",';
+$jw_video_window_size[3] = 'width: "640", height: "360",';
+$jw_video_window_size[4] = 'width: "640", height: "480",';
 
 
 /**
@@ -87,21 +93,29 @@ $remote_output = '<div id="stanford-video-container">You will need to enable Fla
 //Javascript
 $remote_output .= "\n" . '<script type="text/javascript">';
 $remote_output .= "\n\t" . 'jwplayer("stanford-video-container").setup({';
-$remote_output .= "\n\t\t" . "'flashplayer': \"" . $stanford_video_path . "/media/player.swf\",";
+$remote_output .= "\n\t\t" . "flashplayer: \"" . $stanford_video_path . "/media/player.swf\",";
 
 // Check for keyframe; set it to the default if one doesn't exist.
 if(!empty($keyframe)) {
-  $remote_output .= "\n\t\t" . "'image': \"" . $basepath.$keyframe . "\"";
+  $remote_output .= "\n\t\t" . "image: \"" . $basepath.$keyframe . "\",";
 } 
 else {
-  $remote_output .= "\n\t\t" . "'image': \"" . $keyframe_default . "\"";
+  $remote_output .= "\n\t\t" . "image: \"" . $keyframe_default . "\",";
 }
+// Set the window size.
+$remote_output .= "\n\t\t" . $jw_video_window_size[$video_resolution];
+// RTMP provider
+$remote_output .= "\n\t\t" . "provider: \"rtmp\",";
+// RTMP streaming application location
+$remote_output .= "\n\t\t" . "streamer: \"" . $remote_streamer . "\",";
+// Remote file name
+$remote_output .= "\n\t\t" . "file: \"" . $remote_file . "\",";
+// Caption plugin
+$remote_output .= "\n\t\t" . "'plugins': {\n\t\t\t'captions-2': {\n\t\t\t\t 'file': \"" . $basepath.$caption . "\"\n\t\t\t}\n\t\t}";
 $remote_output .= "\n\t});"; //close the setup
 $remote_output .= "\n" . '</script>';
 
 
-// Set the window size.
-$remote_output .= "$video_window_size[$video_resolution] ";
 
 
 /**
@@ -126,7 +140,7 @@ else {
 
 ?>
 <video
-    <?php print("src=\"$basepath.$media\""); ?>
+    <?php print("src=\"" . $basepath . $media . "\""); ?>
     <?php print $video_window_size[$video_resolution]; ?>
     id="container" 
     poster="<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>"
@@ -137,7 +151,7 @@ else {
     jwplayer("container").setup({
         'flashplayer': "<?php print $stanford_video_path; ?>/media/player.swf",
         'image': "<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>",
-        //'file': "<?php print $basepath.$media; ?>",
+        'file': "<?php print $basepath.$media; ?>",
         'plugins': {
           'captions-2': {
             'file': "<?php print $basepath.$caption; ?>"

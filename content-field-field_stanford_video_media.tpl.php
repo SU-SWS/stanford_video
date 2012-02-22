@@ -74,20 +74,57 @@ $video_window_size[1] = 'width="480" height="340"' . "\n";
 $video_window_size[2] = 'width="320" height="240"' . "\n";
 $video_window_size[3] = 'width="640" height="360"' . "\n";
 $video_window_size[4] = 'width="640" height="480"' . "\n";
-?>
 
-<video 
-    <?php
-      if(!empty($media)) { 
-        print("src=\"$basepath.$media\"");
-      }
-      elseif(!empty($remote)) {
-        print("src=\"$remote\"");
-      }
-      else {
-        print t("Something has gone terribly wrong.");
-      }
-    ?>
+
+/**
+ * TODO: Break the following logic up so that the first check is for remote or local media.
+ * If it's remote, use a regular div and use JW Player to serve it up.
+ * If it's local, use a <video> tag and use JW Player to serve it up.
+ */
+
+// Check for remote first, and output the HTML/JS to serve that.
+if(!empty($remote)) {
+  print($remote_output);
+}
+// Check for local and output its HTML/JS.
+elseif(!empty($media)) { 
+  print($media_output);
+}
+// If that didn't work, return a warning.
+else {
+  drupal_set_message(t("Could not find a video file."), 'warning');
+}
+
+
+/**
+ * Generate the HTML and Javascript to serve a remote streaming video with JW Player.
+ * This method relies strictly on Flash and therefore does not have an HTML5 fallback.
+ */
+
+//HTML
+$remote_output = '<div id="stanford-video-container">You will need to enable Flash to view this video</div>';
+
+//Javascript
+$remote_output .= "\n" . '<script type="text/javascript">';
+$remote_output .= "\n\t" . 'jwplayer("stanford-video-container").setup({';
+$remote_output .= "\n\t\t" . "'flashplayer': \"" . $stanford_video_path . "/media/player.swf,";
+$remote_output .= "\n" . '</script>';
+
+// Check for keyframe; set it to the default if one doesn't exist.
+if(!empty($keyframe)) {
+  $remote_output .= "$basepath.$keyframe ";
+} 
+else {
+  $remote_output .= "$keyframe_default ";
+}
+
+// Set the window size.
+$remote_output .= "$video_window_size[$video_resolution] ";
+
+print $remote_output;
+?>
+<video
+    <?php print("src=\"$basepath.$media\""); ?>
     <?php print $video_window_size[$video_resolution]; ?>
     id="container" 
     poster="<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>"

@@ -1,0 +1,6 @@
+Stanford Video x.x-x.x xxxx-xx-xx
+-----------------------------------
+
+Stanford Video 6.x-2.0-alpha1 2012-02-22
+Version 2.0 uses JW Player 5.9
+Has been tested to work in IE9

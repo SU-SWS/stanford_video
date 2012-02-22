@@ -83,6 +83,9 @@ $jw_video_window_size[4] = 'width: "640", height: "480",';
 
 
 /**
+ * 
+ * REMOTE VIDEO
+ *
  * Generate the HTML and Javascript to serve a remote streaming video with JW Player.
  * This method relies strictly on Flash and therefore does not have an HTML5 fallback.
  */
@@ -115,11 +118,42 @@ $remote_output .= "\n\t\t" . "'plugins': {\n\t\t\t'captions-2': {\n\t\t\t\t 'fil
 $remote_output .= "\n\t});"; //close the setup
 $remote_output .= "\n" . '</script>';
 
+/**
+ * 
+ * LOCAL VIDEO
+ *
+ * Generate the HTML and Javascript to serve a locally-hosted video with JW Player.
+ * This method uses Flash first and has an HTML5 fallback.
+ */
+
+// HTML5 <video> tag, id and media src
+$local_output = '<video id="stanford-video-container" src="' . $basepath. $media .'" ';
+// Set the window size
+$local_output .= $video_window_size[$video_resolution];
+// Check for keyframe; set it to the default if one doesn't exist.
+if(!empty($keyframe)) {
+  $local_output .= 'poster="' . $basepath.$keyframe . '" ';
+} 
+else {
+  $local_output .= 'poster="' . $keyframe_default . '" ';
+}
+$local_output .= ">You will need to enable Flash to view this video</video>";
+
+//Javascript
+$local_output .= "\n" . '<script type="text/javascript">';
+$local_output .= "\n\t" . 'jwplayer("stanford-video-container").setup({';
+$local_output .= "\n\t\t" . "flashplayer: \"" . $stanford_video_path . "/media/player.swf\",";
+
+// Caption plugin
+$local_output .= "\n\t\t" . "'plugins': {\n\t\t\t'captions-2': {\n\t\t\t\t 'file': \"" . $basepath.$caption . "\"\n\t\t\t}\n\t\t}";
+$local_output .= "\n\t});"; //close the setup
+$local_output .= "\n" . '</script>';
+
 
 
 
 /**
- * TODO: Break the following logic up so that the first check is for remote or local media.
+ * Check for remote or local media.
  * If it's remote, use a regular div and use JW Player to serve it up.
  * If it's local, use a <video> tag and use JW Player to serve it up.
  */
@@ -130,37 +164,13 @@ if(!empty($remote)) {
 }
 // Check for local and output its HTML/JS.
 elseif(!empty($media)) { 
-  print($media_output);
+  print($local_output);
 }
 // If that didn't work, return a warning.
 else {
   drupal_set_message(t("Could not find a video file."), 'warning');
 }
 
-
-?>
-<video
-    <?php print("src=\"" . $basepath . $media . "\""); ?>
-    <?php print $video_window_size[$video_resolution]; ?>
-    id="container" 
-    poster="<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>"
->
-</video>
-
-<script type="text/javascript">
-    jwplayer("container").setup({
-        'flashplayer': "<?php print $stanford_video_path; ?>/media/player.swf",
-        'image': "<?php if(!empty($keyframe)) {print $basepath.$keyframe;} else {print $keyframe_default;} ?>",
-        'file': "<?php print $basepath.$media; ?>",
-        'plugins': {
-          'captions-2': {
-            'file': "<?php print $basepath.$caption; ?>"
-          }
-        }
-    });
-</script>
-
-<?php
 
 /*
 if ($videocols == 1){

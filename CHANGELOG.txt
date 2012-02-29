@@ -1,5 +1,10 @@
 Stanford Video x.x-x.x xxxx-xx-xx
 ---------------------------------
+
+Stanford Video 6.x-2.0-alpha3 2012-02-29
+----------------------------------------
+Added CHANGELOG.txt
+
 Stanford Video 6.x-2.0-alpha2 2012-02-28
 ----------------------------------------
 Added LICENSE.txt

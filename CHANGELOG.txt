@@ -1,6 +1,10 @@
 Stanford Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+Stanford Video 6.x-2.0-alpha4 2012-03-28
+----------------------------------------
+Updated package information in .info file
+
 Stanford Video 6.x-2.0-alpha3 2012-02-29
 ----------------------------------------
 Added CHANGELOG.txt

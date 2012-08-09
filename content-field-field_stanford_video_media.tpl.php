@@ -56,12 +56,12 @@ $filepath = file_directory_path();
 // Module path
 $stanford_video_path = url(drupal_get_path('module', 'stanford_video'));
 
-// Name of the file at the remote destination, e.g., "media.flv"
-preg_match('/[^\/]*.flv/', $remote, $matches);
+// Name of the file at the remote destination, e.g., "media.flv," "media.mp4," etc.
+preg_match('/[^\/]*.(flv|mp4|m4v|mp3)/', $remote, $matches);
 $remote_file = $matches[0];
 
 // URL to the streaming server group space, e.g., rtmp://sv-stream.stanford.edu/groupname
-$splits = preg_split('/\/[^\/]*.flv/', $remote);
+$splits = preg_split('/\/[^\/]*.(flv|mp4|m4v|mp3)/', $remote);
 $remote_streamer = $splits[0];
 
 drupal_add_js(drupal_get_path('module', 'stanford_video') . '/media/jwplayer.js');

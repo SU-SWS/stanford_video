@@ -1,6 +1,10 @@
 Stanford Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+Stanford Video 6.x-2.0-alpha5 2012-08-09
+----------------------------------------
+Added support for .mp4, .m4v, .mp3 streaming files
+
 Stanford Video 6.x-2.0-alpha4 2012-03-28
 ----------------------------------------
 Updated package information in .info file

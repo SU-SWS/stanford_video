@@ -1,29 +1,7 @@
 <?php
-
-include_once('stanford_video.features.inc');
-
-/*
- * Implementation of hook_help().
+/**
+ * @file
+ * Code for the Stanford Video feature.
  */
-function stanford_video_help($path, $arg) {
-  switch ($path) {
-    case 'admin/help#stanford_video':
-      $output = '<p>'. t('This module provides a turnkey solution for importing videos and captions from !captioning. It includes a &quot;Stanford Video&quot; content type, and an accessible video player. ', array('!captioning' => l('captioning.stanford.edu', 'http://captioning.stanford.edu'))) .'</p>';
-      $output .= '<p>'.  t('You will need your transcoded video in <em>.mp4</em> or <em>.flv</em> format, or have the streaming URL for it from !stanfordvideo or another streaming video service', array('!stanfordvideo' => l('Stanford Video', 'http://stanfordvideo.stanford.edu'))) .'</p>';
-      $output .= '<p>'.  t('You also will need the caption file in <em>.dfxp</em> or <em>.srt</em> format.') .'</p>';
-      $output .= '<p>'.  t('Create a new Stanford Video node at !addvideonode.', array('!addvideonode' => l('node/add/stanford-video', 'node/add/stanford-video'))) .'</p>';
-      $output .= '<p>'.  t('If you are uploading your .mp4 or .flv file to your Drupal site, upload it in the <em>Media File</em> field.') .'</p>';
-      $output .= '<p>'.  t('If you wish to link to a streaming video service (for example, !streamingservice), enter the URL for your streaming video in the <em>Remotely Hosted Video File</em> field (the URL should start with a <em>rtmp://</em> prefix.) For example, if your account name is &quot;politicalscience&quot;, and the file you want to stream is named &quot;aweseomevideo.flv&quot;, you would enter <strong>rtmp://sv-stream.stanford.edu/politicalscience/awesomevideo.flv</strong> in the <em>Remotely Hosted Video File</em> field.', array('!streamingservice' => l('Stanford Video\'s streaming video service', 'http://stanfordvideo.stanford.edu/streaming/'))) .'</p>';
-      $output .= '<p>'.  t('Upload your caption file in the <em>Caption File</em> field, and choose a <em>Video Resolution</em>.') .'</p>';
-      $output .= '<p>'.  t('Optionally, you also may upload a &quot;Keyframe&quot;, which is the still frame shown before the video begins playing. If you do not upload a Keyframe, the default image is the Stanford Block S with Tree logo.') .'</p>';
-      return $output;
-  }
-}
 
-/*
- * Implementation of hook_theme_registry_alter().
- * Tell Drupal to look in the module directory for a CCK field template file (content-field.tpl.php).
- */
-function stanford_video_theme_registry_alter(&$theme_registry) {
-  $theme_registry['content_field']['theme paths'][] = drupal_get_path('module', 'stanford_video');
-}
+include_once 'stanford_video.features.inc';

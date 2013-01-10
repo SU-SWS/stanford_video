@@ -5,3 +5,11 @@
  */
 
 include_once 'stanford_video.features.inc';
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function stanford_video_field_formatter_info_alter(&$info) {
+  $info['jw_player']['field types'][] = 'text';
+  //dsm($info);
+}

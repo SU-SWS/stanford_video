@@ -29,58 +29,6 @@ function stanford_video_theme($existing = 'jw_player') {
 }
 
 /**
- * Implements hook_field_formatter_info_alter().
- */
-/*function stanford_video_field_formatter_info_alter(&$info) {
-  if (isset($info['jw_player'])) {
-    $info['jw_player']['field types'][] = 'link_field';
-  }
-    dpm($info);
-}*/
-
-/**
- * Implements hook_field_formatter_view().
- */
-/*function stanford_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  $element = array();
-  if ($display['type'] == 'jw_player') {
-    // Process files for the theme function.
-    $files = array();
-    foreach ($items as $delta => $item) {
-      $files[$delta] = (object) $item;
-    }
-    foreach ($files as $delta => $file) {
-      $element[$delta] = array(
-        '#theme' => 'stanford_video',
-        '#preset' => $display['settings']['jwplayer_preset'],
-        '#entity' => $entity,
-        '#entity_type' => $entity_type,
-      );
-      if (isset($file->fid)) {
-        $element[$delta]['#file_object'] = $file;
-      } else {
-        
-        $url = $file->url;
-        $providers = stanford_video_provider_load();
-        foreach ($providers as $provider) {
-          // TODO: respect active provider setting.
-          $provider->process_url($url, $element[$delta]);
-        }
-        
-        $element[$delta]['#sources'] = array(
-          array(
-            'file_path' => $url,
-            'file_mime' => 'video/mp4',
-          ),
-        );
-      }
-    }
-  }
-  
-  return $element;
-}*/
-
-/**
  * Process variables for jw_player.tpl.php.
  *
  * @param $variables

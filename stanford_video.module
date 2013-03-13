@@ -88,7 +88,7 @@ function stanford_video_provider_load($name = NULL) {
 /**
  * Implements hook_theme().
  */
-function stanford_video_theme() {
+function stanford_video_theme($existing = 'jw_player') {
   return array(
     'jw_player' => array(
       'variables' => array(
@@ -100,6 +100,7 @@ function stanford_video_theme() {
         'options' => array(),
         'entity' => NULL,
         'entity_type' => '',
+        'captions' => '',
       ),
       'template' => 'theme/jw_player',
     ),
@@ -109,18 +110,18 @@ function stanford_video_theme() {
 /**
  * Implements hook_field_formatter_info_alter().
  */
-function stanford_video_field_formatter_info_alter(&$info) {
+/*function stanford_video_field_formatter_info_alter(&$info) {
   if (isset($info['jw_player'])) {
     $info['jw_player']['field types'][] = 'link_field';
   }
-}
+    dpm($info);
+}*/
 
 /**
  * Implements hook_field_formatter_view().
  */
-function stanford_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+/*function stanford_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
-
   if ($display['type'] == 'jw_player') {
     // Process files for the theme function.
     $files = array();
@@ -156,4 +157,187 @@ function stanford_video_field_formatter_view($entity_type, $entity, $field, $ins
   }
   
   return $element;
+}*/
+
+/**
+ * Process variables for jw_player.tpl.php.
+ *
+ * @param $variables
+ *   An array that must contain one (and only one) of the following:
+ *   - $file_object The file object you would like JW Player to play.
+ *   - $sources If you would like to play a URL directly instead of a file
+ *     object the URL can be passed directly to the theme function. The file URL
+ *     must be provided within an array. This is helpful for playing back the
+ *     contents of link fields. Optionally the array can contain multiple URLS
+ *     to allow for multiple video formats or adaptive bitrate switching. Here
+ *     is a sample sources array that contains two formats of a video:
+ *
+ *     @code
+ *     $variables['sources'] = array(
+ *       array(
+ *         'file_path' => 'http://example.com/video.ogg',
+ *         'file_mime' => 'video/ogg',
+ *       ),
+ *       array(
+ *         'file_path' => 'http://example.com/video.m4v',
+ *         'file_mime' => 'video/mp4',
+ *       ),
+ *     );
+ *     @endcode
+ *
+ *     To use adaptive bitrate switching two additional parameters - with and
+ *     and bitrate are to be provided. *Note that adaptive bitrate is only
+ *     supported in the flash version of the player. In preprocessing the player
+ *     will automatically switch to flash playback mode when two sources are
+ *     supplied with bitrates.
+ *
+ *   The following optional variables can also be set:
+ *   - $preset (highly recommended!) The machine name of the JW Player preset
+ *     you would like to use. Template preprocessing will take care of applying
+ *     the preset's settings for you.
+ *   - $image URL for the image ("poster" in HTML 5 video) to use as the video
+ *     preview.
+ *   - $options Additional options for the player. These options will override
+ *     The module's defaults as well as the presets defaults.
+ *
+ * @see jw_player.tpl.php
+ */
+function stanford_video_preprocess_jw_player(&$variables) {
+  dpm($variables);
+  // If a file object has been passed populate the sources array with the
+  // variables derived from it.
+  if (isset($variables['file_object'])) {
+    $variables['sources'] = array(
+      array(
+        'file_path' => file_create_url($variables['file_object']->uri),
+        'file_mime' => $variables['file_object']->filemime,
+      )
+    );
+  }
+
+  // Load defaults as the starting point.
+  $default_settings = jw_player_default_settings();
+
+  // Load preset if set.
+  $preset_settings = array();
+  if (!empty($variables['preset'])) {
+    $preset = jw_player_preset_load($variables['preset']);
+    // Additional check to ensure that the preset has actually loaded. This
+    // prevents problems where a preset has been deleted but a field is still
+    // configured to use it.
+    if (!empty($preset)) {
+      $preset_settings = $preset['settings'];
+    }
+  }
+  
+  // Get any preset override options that were sent through the formatter or
+  // theme call.
+  $options = array();
+  if (isset($variables['options'])) {
+    $options = $variables['options'];
+    unset($variables['options']);
+  }
+  
+  // Merge all variables together. Preset settings take priority over defaults,
+  // variables passed directly to the theme function take priority over both.
+  $variables = array_merge($default_settings, $preset_settings, $options, $variables);
+
+  // Give each instance of the player a unique id. A random hash is used in
+  // place of drupal_html_id() due to potentially conflicting ids in cases where
+  // the entire output of the theme function is cached.
+  $variables['html_id'] = md5(rand());
+
+  // Check if there is one or multiple files. If one file then we set 'file', if
+  // there are multiple files we set 'levels'. Note that levels is used for both
+  // multiple video formats as well as for adaptive bitrates.
+  if (count($variables['sources']) > 1) {
+    $variables['config']['levels'] = array();
+    foreach ($variables['sources'] as $key => $source) {
+      $variables['config']['levels'][$key]['file'] = $source['file_path'];
+      if (isset($source['bitrate'])) {
+        $variables['config']['levels'][$key]['bitrate'] = $source['bitrate'];
+      }
+      if (isset($source['width'])) {
+        $variables['config']['levels'][$key]['width'] = $source['width'];
+      }
+    }
+  }
+  else {
+   $variables['config']['file'] = $variables['sources'][0]['file_path'];
+  }
+
+  // Resolve skin url
+  $skin = !empty($variables['skin']) ? jw_player_skins($variables['skin']) : '';
+  $variables['skin'] = !empty($skin) ? file_create_url($skin->uri) : '';
+
+  // Copy player variables into their own array to be set as JavaScript
+  // configuration.
+  // @todo Bad smell here. Refactoring needed.
+  $config_variables = array(
+    'width',
+    'height',
+    'image',
+    'controlbar',
+    'playlist.position',
+    'playlist.size',
+    'skin',
+    'autoplay',
+    'streamer',
+  );
+  foreach ($config_variables as $key) {
+    if (!empty($variables[$key])) {
+      $variables['config'][$key] = $variables[$key];
+    }
+  }
+  
+  $variables['display_preview'] = FALSE;
+  if ($variables['preview_start'] && $variables['preview_duration']) {
+    // Assume that the last module invoking this hook gets to decide.
+    $display_preview = array_pop(module_invoke_all('jw_player_display_preview', $variables));
+    if ($display_preview) {
+      $variables['config']['start'] = $variables['preview_start'];
+      $variables['config']['duration'] = $variables['preview_duration'];
+      // The control bar allows users to thwart the preview.
+      $variables['config']['controlbar'] = FALSE;
+    }
+  }
+
+  // Initalize the player modes. The order of this array determines which
+  // playback mode will be tried first before the browser falls back to the next
+  // option. The default is html5 first, but this can be overridden by a preset
+  // (see the code directly below).
+  $variables['config']['modes'] = array(
+    array(
+      'type' => 'html5'
+    ),
+    array(
+      'type' => 'flash',
+      'src' => file_create_url(libraries_get_path('jwplayer') . '/player.swf'),
+    ),
+  );
+
+  // If the preset has the primary mode set, modify the modes array so that it
+  // comes first.
+  if (isset($variables['mode'])) {
+    foreach ($variables['config']['modes'] as $key => $value) {
+      if ($value['type'] == $variables['mode']) {
+        unset($variables['config']['modes'][$key]);
+        array_unshift($variables['config']['modes'], $value);
+      }
+    }
+  }
+
+  // Copy over all enabled plugins into the 'config' section as this is the key
+  // that is sent over to the player.
+  if (!empty($variables['plugins'])) {
+    foreach ($variables['plugins'] as $plugin => $info) {
+      if (!$info['enable']) {
+        continue;
+      }
+      $variables['config']['plugins'][$plugin] = $info;
+    }
+  }
+//  $variables['config']['file'] = $variables['file_object']->uri;
+  $variables['config']['file'] = 'pickles.mp4';
+  $variables['config']['streamer'] = 'rtmp://sv-stream.stanford.edu/su-webservices/';
 }

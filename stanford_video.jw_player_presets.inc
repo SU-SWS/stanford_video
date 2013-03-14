@@ -17,7 +17,7 @@ function stanford_video_default_jw_player_presets() {
   $jw_player_preset->machine_name = 'stanford_video';
   $jw_player_preset->description = 'Default configuration for Stanford';
   $jw_player_preset->settings = array(
-    'mode' => 'html5',
+    'mode' => 'flash',
     'width' => '640',
     'height' => '480',
     'controlbar' => 'over',

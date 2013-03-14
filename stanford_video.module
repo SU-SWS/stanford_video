@@ -23,7 +23,7 @@ function stanford_video_theme($existing = 'jw_player') {
         'entity_type' => '',
         'captions' => '',
       ),
-      'template' => 'theme/jw_player',
+      'template' => 'theme/stanford_jw_player',
     ),
   );
 }
@@ -72,141 +72,19 @@ function stanford_video_theme($existing = 'jw_player') {
  * @see jw_player.tpl.php
  */
 function stanford_video_preprocess_jw_player(&$variables) {
-  dpm($variables);
-  // If a file object has been passed populate the sources array with the
-  // variables derived from it.
   if (isset($variables['file_object'])) {
-    $variables['sources'] = array(
-      array(
-        'file_path' => file_create_url($variables['file_object']->uri),
-        'file_mime' => $variables['file_object']->filemime,
-      )
-    );
-  }
-
-  // Load defaults as the starting point.
-  $default_settings = jw_player_default_settings();
-
-  // Load preset if set.
-  $preset_settings = array();
-  if (!empty($variables['preset'])) {
-    $preset = jw_player_preset_load($variables['preset']);
-    // Additional check to ensure that the preset has actually loaded. This
-    // prevents problems where a preset has been deleted but a field is still
-    // configured to use it.
-    if (!empty($preset)) {
-      $preset_settings = $preset['settings'];
+    if (empty($variables['file_url'])) {
+      $variables['file_url'] = file_create_url($variables['file_object']->uri);
     }
-  }
-  
-  // Get any preset override options that were sent through the formatter or
-  // theme call.
-  $options = array();
-  if (isset($variables['options'])) {
-    $options = $variables['options'];
-    unset($variables['options']);
-  }
-  
-  // Merge all variables together. Preset settings take priority over defaults,
-  // variables passed directly to the theme function take priority over both.
-  $variables = array_merge($default_settings, $preset_settings, $options, $variables);
-
-  // Give each instance of the player a unique id. A random hash is used in
-  // place of drupal_html_id() due to potentially conflicting ids in cases where
-  // the entire output of the theme function is cached.
-  $variables['html_id'] = md5(rand());
-
-  // Check if there is one or multiple files. If one file then we set 'file', if
-  // there are multiple files we set 'levels'. Note that levels is used for both
-  // multiple video formats as well as for adaptive bitrates.
-  if (count($variables['sources']) > 1) {
-    $variables['config']['levels'] = array();
-    foreach ($variables['sources'] as $key => $source) {
-      $variables['config']['levels'][$key]['file'] = $source['file_path'];
-      if (isset($source['bitrate'])) {
-        $variables['config']['levels'][$key]['bitrate'] = $source['bitrate'];
-      }
-      if (isset($source['width'])) {
-        $variables['config']['levels'][$key]['width'] = $source['width'];
-      }
-    }
-  }
-  else {
-   $variables['config']['file'] = $variables['sources'][0]['file_path'];
-  }
-
-  // Resolve skin url
-  $skin = !empty($variables['skin']) ? jw_player_skins($variables['skin']) : '';
-  $variables['skin'] = !empty($skin) ? file_create_url($skin->uri) : '';
-
-  // Copy player variables into their own array to be set as JavaScript
-  // configuration.
-  // @todo Bad smell here. Refactoring needed.
-  $config_variables = array(
-    'width',
-    'height',
-    'image',
-    'controlbar',
-    'playlist.position',
-    'playlist.size',
-    'skin',
-    'autoplay',
-    'streamer',
-  );
-  foreach ($config_variables as $key) {
-    if (!empty($variables[$key])) {
-      $variables['config'][$key] = $variables[$key];
-    }
-  }
-  
-  $variables['display_preview'] = FALSE;
-  if ($variables['preview_start'] && $variables['preview_duration']) {
-    // Assume that the last module invoking this hook gets to decide.
-    $display_preview = array_pop(module_invoke_all('jw_player_display_preview', $variables));
-    if ($display_preview) {
-      $variables['config']['start'] = $variables['preview_start'];
-      $variables['config']['duration'] = $variables['preview_duration'];
-      // The control bar allows users to thwart the preview.
-      $variables['config']['controlbar'] = FALSE;
-    }
-  }
-
-  // Initalize the player modes. The order of this array determines which
-  // playback mode will be tried first before the browser falls back to the next
-  // option. The default is html5 first, but this can be overridden by a preset
-  // (see the code directly below).
-  $variables['config']['modes'] = array(
-    array(
-      'type' => 'html5'
-    ),
-    array(
-      'type' => 'flash',
-      'src' => file_create_url(libraries_get_path('jwplayer') . '/player.swf'),
-    ),
-  );
-
-  // If the preset has the primary mode set, modify the modes array so that it
-  // comes first.
-  if (isset($variables['mode'])) {
-    foreach ($variables['config']['modes'] as $key => $value) {
-      if ($value['type'] == $variables['mode']) {
-        unset($variables['config']['modes'][$key]);
-        array_unshift($variables['config']['modes'], $value);
-      }
-    }
-  }
-
-  // Copy over all enabled plugins into the 'config' section as this is the key
-  // that is sent over to the player.
-  if (!empty($variables['plugins'])) {
-    foreach ($variables['plugins'] as $plugin => $info) {
-      if (!$info['enable']) {
-        continue;
-      }
-      $variables['config']['plugins'][$plugin] = $info;
+    //if a URL couldn't be created, set it to the remote URI
+    // @todo this can probably be fixed with https://drupal.org/project/filter_protocols; see https://drupal.org/node/685592
+    if (empty($variables['file_url'])) {
+      $variables['file_url'] = $variables['file_object']->uri;
     }
   }
 //  $variables['config']['file'] = $variables['file_object']->uri;
   $variables['config']['file'] = 'pickles.mp4';
   $variables['config']['streamer'] = 'rtmp://sv-stream.stanford.edu/su-webservices/';
+  $variables['config']['caption'] = 'http://localhost:8888/videod7/sites/default/files/captions/pickles_0.srt';
+//  dpm($variables);
 }

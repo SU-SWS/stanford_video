@@ -7,6 +7,158 @@
 include_once 'stanford_video.features.inc';
 
 /**
+ * Implements hook_field_formatter_info().
+ */
+function stanford_video_field_formatter_info() {
+  $formatters = array(
+    'stanford_video' => array(
+      'label' => t('Stanford Video'),
+      'field types' => array('file', 'link_field'),
+      'settings' => array(
+        'jwplayer_preset' => '',
+      ),
+    ),
+  );
+  return $formatters;
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function stanford_video_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $element = array();
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  // Formatter types.
+  switch ($display['type']) {
+    case 'stanford_video':
+      $presets = jw_player_preset_load();
+
+      // If there are presets prompt the user to select one or create another.
+      // If no, prompt to create a preset.
+      if (!empty($presets)) {
+        foreach (jw_player_preset_load() as $preset => $item) {
+          $options[$preset] = $item['preset_name'];
+        }
+
+        $element['jwplayer_preset'] = array(
+          '#title' => t('Select preset'),
+          '#type' => 'select',
+          '#default_value' => ($settings['jwplayer_preset']) ?  $settings['jwplayer_preset'] : FALSE,
+          '#options' => $options,
+        );
+        $element['links'] = array(
+          '#theme' => 'links',
+          '#links' => array(
+            array(
+              'title' => t('Create new preset'),
+              'href' => 'admin/config/media/jw_player/add',
+            ),
+            array(
+              'title' => t('Manage presets'),
+              'href' => 'admin/config/media/jw_player',
+            ),
+          ),
+        );
+      }
+      else {
+        $element['no_preset_message'] = array(
+          '#markup' => '<div class="messages warning">' . t('No presets are available. You must to <a href="@create">create a preset</a> to proceed.', array('@create' => url('admin/config/media/jw_player/add'))) . '</div>',
+        );
+      }
+      break;
+
+    default:
+      break;
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function stanford_video_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+  $presets = jw_player_preset_load();
+
+  if (isset($presets[$settings['jwplayer_preset']])) {
+    $summary[] = t('Preset: @name', array('@name' => $presets[$settings['jwplayer_preset']]['preset_name']));
+    $summary[] = t('Description: @description', array('@description' => $presets[$settings['jwplayer_preset']]['description']));
+
+    $settings = $presets[$settings['jwplayer_preset']]['settings'];
+    foreach ($settings as $key => $val) {
+      // Filter out complex settings in the form of arrays (such as plugins).
+      // @todo Tackle the display of enabled plugins separately.
+      if (!is_array($val)) {
+        $summary[] = t('@key: @val', array('@key' => $key, '@val' => !empty($val) ? $val : t('default')));
+      }
+    }
+  }
+  else {
+    $summary[] = t('No preset selected');
+  }
+
+  return implode('<br />', $summary);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function stanford_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+/*  dpm($entity_type);
+  dpm($entity);
+  dpm($field);
+  dpm($instance);
+  dpm($langcode);
+  dpm($items);
+  dpm($display);*/
+  if ($display['type'] == 'stanford_video') {
+    // Process files for the theme function.
+    $files = array();
+    foreach ($items as $delta => $item) {
+      switch ($field['type']) {
+        case 'file':
+          $files[$delta] = (object) $item;
+          break;
+        case 'link_field':
+          // Manual override for WebM, because Drupal doesn't detect it.
+          if (substr($item['url'], -5) == '.webm') {
+            $mime = 'video/webm';
+          }
+          else {
+            $mime = file_get_mimetype($item['url']);
+          }
+          // If the mime type is application/octet-stream, default to MP4.
+          // This happens for instance for links without extensions.
+          if ($mime == 'application/octet-stream') {
+            $mime = 'video/mp4';
+          }
+          $files[$delta] = new stdClass();
+          $files[$delta]->uri = $item['url'];
+          $files[$delta]->filemime = $mime;
+          break;
+      }
+    }
+    foreach ($files as $delta => $file) {
+      $element[$delta] = array(
+        '#theme' => 'jw_player',
+        '#file_object' => $file,
+        '#preset' => $display['settings']['jwplayer_preset'],
+        '#captions' => file_create_url($entity->field_stanford_video_caption[$langcode][0]['uri']),
+      );
+    }
+  }
+  return $element;
+}
+
+
+/**
  * Implements hook_theme().
  */
 function stanford_video_theme($existing = 'jw_player') {
@@ -29,47 +181,12 @@ function stanford_video_theme($existing = 'jw_player') {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ * 
  * Process variables for jw_player.tpl.php.
  *
  * @param $variables
- *   An array that must contain one (and only one) of the following:
- *   - $file_object The file object you would like JW Player to play.
- *   - $sources If you would like to play a URL directly instead of a file
- *     object the URL can be passed directly to the theme function. The file URL
- *     must be provided within an array. This is helpful for playing back the
- *     contents of link fields. Optionally the array can contain multiple URLS
- *     to allow for multiple video formats or adaptive bitrate switching. Here
- *     is a sample sources array that contains two formats of a video:
  *
- *     @code
- *     $variables['sources'] = array(
- *       array(
- *         'file_path' => 'http://example.com/video.ogg',
- *         'file_mime' => 'video/ogg',
- *       ),
- *       array(
- *         'file_path' => 'http://example.com/video.m4v',
- *         'file_mime' => 'video/mp4',
- *       ),
- *     );
- *     @endcode
- *
- *     To use adaptive bitrate switching two additional parameters - with and
- *     and bitrate are to be provided. *Note that adaptive bitrate is only
- *     supported in the flash version of the player. In preprocessing the player
- *     will automatically switch to flash playback mode when two sources are
- *     supplied with bitrates.
- *
- *   The following optional variables can also be set:
- *   - $preset (highly recommended!) The machine name of the JW Player preset
- *     you would like to use. Template preprocessing will take care of applying
- *     the preset's settings for you.
- *   - $image URL for the image ("poster" in HTML 5 video) to use as the video
- *     preview.
- *   - $options Additional options for the player. These options will override
- *     The module's defaults as well as the presets defaults.
- *
- * @see jw_player.tpl.php
  */
 function stanford_video_preprocess_jw_player(&$variables) {
   if (isset($variables['file_object'])) {
@@ -85,6 +202,8 @@ function stanford_video_preprocess_jw_player(&$variables) {
 //  $variables['config']['file'] = $variables['file_object']->uri;
   $variables['config']['file'] = 'pickles.mp4';
   $variables['config']['streamer'] = 'rtmp://sv-stream.stanford.edu/su-webservices/';
-  $variables['config']['caption'] = 'http://localhost:8888/videod7/sites/default/files/captions/pickles_0.srt';
-//  dpm($variables);
+  $variables['config']['plugins'] = array();
+  $variables['config']['plugins']['captions-2'] = array();
+  $variables['config']['plugins']['captions-2']['file'] = 'http://localhost:8888/videod7/sites/default/files/captions/pickles_0.srt';
+  dpm($variables);
 }

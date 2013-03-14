@@ -111,9 +111,9 @@ function stanford_video_field_formatter_settings_summary($field, $instance, $vie
  */
 function stanford_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
-/*  dpm($entity_type);
-  dpm($entity);
-  dpm($field);
+//  dpm($entity_type);
+//  dpm($entity);
+/*  dpm($field);
   dpm($instance);
   dpm($langcode);
   dpm($items);
@@ -145,12 +145,27 @@ function stanford_video_field_formatter_view($entity_type, $entity, $field, $ins
           break;
       }
     }
+    // set some variables based on other fields in the entity
+    $captions = '';
+    $filename = '';
+    $streamer = '';
+    if (!empty($entity->field_stanford_video_caption)) {
+      $captions = $entity->field_stanford_video_caption[$langcode][0]['uri'];
+    }
+    if (!empty($entity->field_stanford_video_filename)) {
+      $filename = $entity->field_stanford_video_filename[LANGUAGE_NONE][0]['safe_value'];
+    }
+    if (!empty($entity->field_stanford_video_server) && (!empty($entity->field_stanford_video_account))) {
+      $streamer = $entity->field_stanford_video_server[LANGUAGE_NONE][0]['safe_value'] . $entity->field_stanford_video_account[LANGUAGE_NONE][0]['safe_value'];
+    }
     foreach ($files as $delta => $file) {
       $element[$delta] = array(
         '#theme' => 'jw_player',
         '#file_object' => $file,
         '#preset' => $display['settings']['jwplayer_preset'],
-        '#captions' => file_create_url($entity->field_stanford_video_caption[$langcode][0]['uri']),
+        '#captions' => file_create_url($captions),
+        '#filename' => $filename,
+        '#streamer' => $streamer,
       );
     }
   }
@@ -166,8 +181,8 @@ function stanford_video_theme($existing = 'jw_player') {
     'jw_player' => array(
       'variables' => array(
         'file_object' => NULL,
-        'sources' => '',
         'streamer' => '',
+        'filename' => '',
         'preset' => '',
         'image' => '',
         'options' => array(),
@@ -199,11 +214,38 @@ function stanford_video_preprocess_jw_player(&$variables) {
       $variables['file_url'] = $variables['file_object']->uri;
     }
   }
-//  $variables['config']['file'] = $variables['file_object']->uri;
-  $variables['config']['file'] = 'pickles.mp4';
-  $variables['config']['streamer'] = 'rtmp://sv-stream.stanford.edu/su-webservices/';
+  //streaming variables
+  $variables['config']['file'] = $variables['filename'];
+  $variables['config']['streamer'] = $variables['streamer'];
   $variables['config']['plugins'] = array();
   $variables['config']['plugins']['captions-2'] = array();
-  $variables['config']['plugins']['captions-2']['file'] = 'http://localhost:8888/videod7/sites/default/files/captions/pickles_0.srt';
-  dpm($variables);
+  $variables['config']['plugins']['captions-2']['state'] = TRUE;
+  $variables['config']['plugins']['captions-2']['file'] = $variables['captions'];
+ // dpm($variables);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function stanford_video_form_stanford_video_node_form_alter(&$form, &$form_state, $form_id) {
+  //make our validation function run first
+  if (is_array($form['#validate'])) {
+    array_unshift($form['#validate'], 'stanford_video_node_validate');
+  }
+  else {
+    $form['#validate'][] = 'stanford_video_node_validate';
+  }
+//  dpm($form);
+}
+
+function stanford_video_node_validate($form, &$form_state) {
+/*  if(!empty($form_state)) {
+    dpm($form_state);
+    form_set_error('field_stanford_video_server', 'non-specific error message');
+  }*/
+  $concat_link = '';
+  if(isset($form_state['rebuild']) && (!$form_state['rebuild'])) {
+    $concat_link = $form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value'] . $form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'] . '/' . $form_state['values']['field_stanford_video_filename'][LANGUAGE_NONE][0]['value'];
+  }
+  $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'] = $concat_link;
 }

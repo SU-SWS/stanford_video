@@ -12,9 +12,6 @@ function stanford_video_ctools_plugin_api() {
   if ($module == "jw_player" && $api == "jw_player_presets") {
     return array("version" => "1");
   }
-  if ($owner == 'jw_player' && $api == 'video_provider') {
-    return array("version" => "1");
-  }
 }
 
 /**

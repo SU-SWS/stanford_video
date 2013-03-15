@@ -156,6 +156,20 @@ function stanford_video_strongarm() {
       'title' => 'File Name',
       'hidden' => 0,
     ),
+    'field_stanford_video_external' => array(
+      'region' => 'main',
+      'weight' => '9',
+      'has_required' => FALSE,
+      'title' => 'External Video Embed',
+      'hidden' => 0,
+    ),
+    'field_stanford_video_poster' => array(
+      'region' => 'main',
+      'weight' => '8',
+      'has_required' => FALSE,
+      'title' => 'Poster Image',
+      'hidden' => 0,
+    ),
   );
   $export['nodeformscols_field_placements_stanford_video_default'] = $strongarm;
 

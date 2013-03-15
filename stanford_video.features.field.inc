@@ -258,7 +258,7 @@ function stanford_video_field_default_fields() {
       'description' => 'Enter the embed code from an external video provider (e.g., YouTube, Vimeo) here.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',

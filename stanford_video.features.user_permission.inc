@@ -13,35 +13,45 @@ function stanford_video_user_default_permissions() {
   // Exported permission: create stanford_video content.
   $permissions['create stanford_video content'] = array(
     'name' => 'create stanford_video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete any stanford_video content.
   $permissions['delete any stanford_video content'] = array(
     'name' => 'delete any stanford_video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete own stanford_video content.
   $permissions['delete own stanford_video content'] = array(
     'name' => 'delete own stanford_video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: edit any stanford_video content.
   $permissions['edit any stanford_video content'] = array(
     'name' => 'edit any stanford_video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: edit own stanford_video content.
   $permissions['edit own stanford_video content'] = array(
     'name' => 'edit own stanford_video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 

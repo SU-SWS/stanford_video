@@ -252,7 +252,9 @@ function stanford_video_node_validate($form, &$form_state) {
   }*/
   $concat_link = '';
   if(isset($form_state['rebuild']) && (!$form_state['rebuild'])) {
-    $concat_link = $form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value'] . $form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'] . '/' . $form_state['values']['field_stanford_video_filename'][LANGUAGE_NONE][0]['value'];
+    if(!empty($form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value']) && !empty($form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'])) {
+      $concat_link = $form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value'] . $form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'] . '/' . $form_state['values']['field_stanford_video_filename'][LANGUAGE_NONE][0]['value'];
+    }
   }
   $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'] = $concat_link;
 }

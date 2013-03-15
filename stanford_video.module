@@ -149,6 +149,7 @@ function stanford_video_field_formatter_view($entity_type, $entity, $field, $ins
     $captions = '';
     $filename = '';
     $streamer = '';
+    $poster = '';
     if (!empty($entity->field_stanford_video_caption)) {
       $captions = $entity->field_stanford_video_caption[$langcode][0]['uri'];
     }
@@ -158,6 +159,9 @@ function stanford_video_field_formatter_view($entity_type, $entity, $field, $ins
     if (!empty($entity->field_stanford_video_server) && (!empty($entity->field_stanford_video_account))) {
       $streamer = $entity->field_stanford_video_server[LANGUAGE_NONE][0]['safe_value'] . $entity->field_stanford_video_account[LANGUAGE_NONE][0]['safe_value'];
     }
+    if (!empty($entity->field_stanford_video_poster) && (!empty($entity->field_stanford_video_poster))) {
+      $poster = $entity->field_stanford_video_poster[LANGUAGE_NONE][0]['uri'];
+    }
     foreach ($files as $delta => $file) {
       $element[$delta] = array(
         '#theme' => 'jw_player',
@@ -166,6 +170,7 @@ function stanford_video_field_formatter_view($entity_type, $entity, $field, $ins
         '#captions' => file_create_url($captions),
         '#filename' => $filename,
         '#streamer' => $streamer,
+        '#poster' => file_create_url($poster),
       );
     }
   }
@@ -189,6 +194,7 @@ function stanford_video_theme($existing = 'jw_player') {
         'entity' => NULL,
         'entity_type' => '',
         'captions' => '',
+        'poster' => '',
       ),
       'template' => 'theme/stanford_jw_player',
     ),
@@ -217,6 +223,7 @@ function stanford_video_preprocess_jw_player(&$variables) {
   //streaming variables
   $variables['config']['file'] = $variables['filename'];
   $variables['config']['streamer'] = $variables['streamer'];
+  $variables['config']['poster'] = $variables['poster'];
   $variables['config']['plugins'] = array();
   $variables['config']['plugins']['captions-2'] = array();
   $variables['config']['plugins']['captions-2']['state'] = TRUE;

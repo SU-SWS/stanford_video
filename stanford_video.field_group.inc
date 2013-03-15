@@ -27,6 +27,7 @@ function stanford_video_field_group_info() {
       1 => 'field_stanford_video_server',
       2 => 'field_stanford_video_account',
       3 => 'field_stanford_video_filename',
+      4 => 'field_stanford_video_poster',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

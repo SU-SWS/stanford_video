@@ -147,7 +147,7 @@ function stanford_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '6',
       ),
     ),
   );
@@ -220,6 +220,95 @@ function stanford_video_field_default_fields() {
         ),
         'type' => 'file_generic',
         'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-stanford_video-field_stanford_video_external'.
+  $fields['node-stanford_video-field_stanford_video_external'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_stanford_video_external',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'stanford_video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Enter the embed code from an external video provider (e.g., YouTube, Vimeo) here.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '7',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_stanford_video_external',
+      'label' => 'External Video Embed',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'filtered_html' => 0,
+            'full_html' => 'full_html',
+            'plain_text' => 0,
+          ),
+          'allowed_formats_toggle' => 1,
+          'default_order_toggle' => 1,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'filtered_html' => array(
+                'weight' => '-49',
+              ),
+              'full_html' => array(
+                'weight' => '-50',
+              ),
+              'plain_text' => array(
+                'weight' => '-48',
+              ),
+            ),
+          ),
+        ),
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '9',
       ),
     ),
   );
@@ -374,7 +463,7 @@ function stanford_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -464,6 +553,82 @@ function stanford_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-stanford_video-field_stanford_video_poster'.
+  $fields['node-stanford_video-field_stanford_video_poster'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_stanford_video_poster',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'stanford_video',
+      'deleted' => '0',
+      'description' => 'Upload an image here to serve as a "keyframe". This image will display when the video is stopped, before it starts playing.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_stanford_video_poster',
+      'label' => 'Poster Image',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'default_image' => 0,
+        'file_directory' => 'posters',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '1920x1080',
+        'min_resolution' => '320x240',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '8',
+      ),
+    ),
+  );
+
   // Exported field: 'node-stanford_video-field_stanford_video_server'.
   $fields['node-stanford_video-field_stanford_video_server'] = array(
     'field_config' => array(
@@ -531,7 +696,7 @@ function stanford_video_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -543,12 +708,16 @@ function stanford_video_field_default_fields() {
   t('Description');
   t('Enter a description of the video.');
   t('Enter the URL of the streaming server. If you don\'t know what this is, you can leave it set to the default.');
+  t('Enter the embed code from an external video provider (e.g., YouTube, Vimeo) here.');
   t('Enter the name of the file on the streaming server, e.g., "video.mp4" or "video.flv"');
   t('Enter the name of your account with the Stanford Video streaming service.');
+  t('External Video Embed');
   t('File Name');
+  t('Poster Image');
   t('Streaming Server');
   t('Upload a timestamped caption file (.srt or similar)');
   t('Upload a video file.');
+  t('Upload an image here to serve as a "keyframe". This image will display when the video is stopped, before it starts playing.');
   t('Video File');
   t('Video Link');
 

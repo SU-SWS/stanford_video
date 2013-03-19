@@ -170,28 +170,29 @@ function stanford_video_field_formatter_view($entity_type, $entity, $field, $ins
   return $element;
 }
 
-
 /**
- * Implements hook_theme().
+ * Implements hook_form_FORM_ID_alter().
  */
-function stanford_video_theme($existing = 'jw_player') {
-  return array(
-    'jw_player' => array(
-      'variables' => array(
-        'file_object' => NULL,
-        'streamer' => '',
-        'filename' => '',
-        'preset' => '',
-        'image' => '',
-        'options' => array(),
-        'entity' => NULL,
-        'entity_type' => '',
-        'captions' => '',
-        'poster' => '',
-      ),
-      'template' => 'theme/stanford_jw_player',
-    ),
-  );
+function stanford_video_form_stanford_video_node_form_alter(&$form, &$form_state, $form_id) {
+  //make our validation function run first
+  if (is_array($form['#validate'])) {
+    array_unshift($form['#validate'], 'stanford_video_node_validate');
+  }
+  else {
+    $form['#validate'][] = 'stanford_video_node_validate';
+  }
+}
+
+function stanford_video_node_validate($form, &$form_state) {
+  $concat_link = '';
+  // only do this if we're not rebuilding the form, otherwise Drupal complains
+  if(isset($form_state['rebuild']) && (!$form_state['rebuild'])) {
+    // only do *this* if the user has set something in the server and filename fields; otherwise, leave the link field blank
+    if(!empty($form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value']) && !empty($form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'])) {
+      $concat_link = $form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value'] . $form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'] . '/' . $form_state['values']['field_stanford_video_filename'][LANGUAGE_NONE][0]['value'];
+    }
+  }
+  $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'] = $concat_link;
 }
 
 /**
@@ -224,26 +225,24 @@ function stanford_video_preprocess_jw_player(&$variables) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_theme().
  */
-function stanford_video_form_stanford_video_node_form_alter(&$form, &$form_state, $form_id) {
-  //make our validation function run first
-  if (is_array($form['#validate'])) {
-    array_unshift($form['#validate'], 'stanford_video_node_validate');
-  }
-  else {
-    $form['#validate'][] = 'stanford_video_node_validate';
-  }
-}
-
-function stanford_video_node_validate($form, &$form_state) {
-  $concat_link = '';
-  // only do this if we're not rebuilding the form, otherwise Drupal complains
-  if(isset($form_state['rebuild']) && (!$form_state['rebuild'])) {
-    // only do *this* if the user has set something in the server and filename fields; otherwise, leave the link field blank
-    if(!empty($form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value']) && !empty($form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'])) {
-      $concat_link = $form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value'] . $form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'] . '/' . $form_state['values']['field_stanford_video_filename'][LANGUAGE_NONE][0]['value'];
-    }
-  }
-  $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'] = $concat_link;
+function stanford_video_theme($existing = 'jw_player') {
+  return array(
+    'jw_player' => array(
+      'variables' => array(
+        'file_object' => NULL,
+        'streamer' => '',
+        'filename' => '',
+        'preset' => '',
+        'image' => '',
+        'options' => array(),
+        'entity' => NULL,
+        'entity_type' => '',
+        'captions' => '',
+        'poster' => '',
+      ),
+      'template' => 'theme/stanford_jw_player',
+    ),
+  );
 }

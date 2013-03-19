@@ -51,3 +51,4 @@ features[variable][] = node_preview_stanford_video
 features[variable][] = node_submitted_stanford_video
 features[variable][] = nodeformscols_field_placements_stanford_video_default
 project status url = http://drupalfeatures.stanford.edu/fserver/stanford_video/7.x
+; stylesheets[all][] = css/stanford-video-responsive.css

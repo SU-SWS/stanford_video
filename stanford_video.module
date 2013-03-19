@@ -181,8 +181,12 @@ function stanford_video_form_stanford_video_node_form_alter(&$form, &$form_state
   else {
     $form['#validate'][] = 'stanford_video_node_validate';
   }
+  $form['field_stanford_video_external']['#access'] = user_access('embed external web video');
 }
 
+/**
+ * Validation function for stanford_video_form_stanford_video_node_form_alter().
+ */
 function stanford_video_node_validate($form, &$form_state) {
   $concat_link = '';
   // only do this if we're not rebuilding the form, otherwise Drupal complains
@@ -195,6 +199,18 @@ function stanford_video_node_validate($form, &$form_state) {
   $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'] = $concat_link;
 }
 
+/**
+ * Implements hook_permission().
+ */
+function stanford_video_permission() {
+  return array (
+    'embed external web video' => array(
+      'title' => t('Embed external web video'),
+      'description' => t('Allow user to paste embed code (iframe, etc.) from external video providers.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
 /**
  * Implements hook_preprocess_HOOK().
  * 

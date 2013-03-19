@@ -372,7 +372,7 @@ function stanford_video_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'file_directory' => 'videos',
-        'file_extensions' => 'txt mp3 mp4 m4v flv',
+        'file_extensions' => 'mp3 mp4 m4v flv webm',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),

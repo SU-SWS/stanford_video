@@ -79,7 +79,7 @@ function stanford_video_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -228,7 +228,7 @@ function stanford_video_field_default_fields() {
   $fields['node-stanford_video-field_stanford_video_external'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_stanford_video_external',
@@ -308,7 +308,7 @@ function stanford_video_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '9',
+        'weight' => '6',
       ),
     ),
   );
@@ -395,7 +395,7 @@ function stanford_video_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
@@ -624,7 +624,7 @@ function stanford_video_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '8',
+        'weight' => '1',
       ),
     ),
   );

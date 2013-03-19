@@ -89,34 +89,34 @@ function stanford_video_strongarm() {
   $strongarm->value = array(
     'title' => array(
       'region' => 'main',
-      'weight' => '-5',
+      'weight' => '0',
       'has_required' => TRUE,
       'title' => 'Title',
     ),
     'additional_settings' => array(
       'region' => 'main',
-      'weight' => '99',
+      'weight' => '10',
       'has_required' => FALSE,
       'title' => 'Vertical tabs',
       'hidden' => 0,
     ),
     'actions' => array(
       'region' => 'main',
-      'weight' => '100',
+      'weight' => '11',
       'has_required' => FALSE,
       'title' => 'Save',
       'hidden' => 0,
     ),
     'body' => array(
       'region' => 'main',
-      'weight' => '1',
+      'weight' => '3',
       'has_required' => FALSE,
       'title' => 'Description',
       'hidden' => 0,
     ),
     'field_stanford_video_file' => array(
       'region' => 'main',
-      'weight' => '4',
+      'weight' => '5',
       'has_required' => FALSE,
       'title' => 'Video File',
       'hidden' => 0,
@@ -165,7 +165,7 @@ function stanford_video_strongarm() {
     ),
     'field_stanford_video_poster' => array(
       'region' => 'main',
-      'weight' => '8',
+      'weight' => '1',
       'has_required' => FALSE,
       'title' => 'Poster Image',
       'hidden' => 0,

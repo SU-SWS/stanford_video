@@ -72,7 +72,9 @@ function stanford_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_stanford_video';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
   $export['menu_options_stanford_video'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -109,7 +111,7 @@ function stanford_video_strongarm() {
     ),
     'body' => array(
       'region' => 'main',
-      'weight' => '3',
+      'weight' => '1',
       'has_required' => FALSE,
       'title' => 'Description',
       'hidden' => 0,
@@ -123,7 +125,7 @@ function stanford_video_strongarm() {
     ),
     'field_stanford_video_caption' => array(
       'region' => 'main',
-      'weight' => '2',
+      'weight' => '3',
       'has_required' => FALSE,
       'title' => 'Caption File',
       'hidden' => 0,
@@ -165,9 +167,9 @@ function stanford_video_strongarm() {
     ),
     'field_stanford_video_poster' => array(
       'region' => 'main',
-      'weight' => '1',
+      'weight' => '2',
       'has_required' => FALSE,
-      'title' => 'Poster Image',
+      'title' => 'Image',
       'hidden' => 0,
     ),
   );

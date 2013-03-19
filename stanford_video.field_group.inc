@@ -48,7 +48,7 @@ function stanford_video_field_group_info() {
   $field_group->parent_name = 'group_stanford_web_video';
   $field_group->data = array(
     'label' => 'Streaming Video',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_stanford_video_link',
       1 => 'field_stanford_video_server',
@@ -78,7 +78,7 @@ function stanford_video_field_group_info() {
   $field_group->parent_name = 'group_stanford_web_video';
   $field_group->data = array(
     'label' => 'Uploaded Video',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_stanford_video_file',
     ),
@@ -107,8 +107,10 @@ function stanford_video_field_group_info() {
     'label' => 'Stanford Web Video',
     'weight' => '4',
     'children' => array(
-      0 => 'group_stanford_video_streaming',
-      1 => 'group_stanford_video_uploaded',
+      0 => 'field_stanford_video_caption',
+      1 => 'field_stanford_video_poster',
+      2 => 'group_stanford_video_streaming',
+      3 => 'group_stanford_video_uploaded',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

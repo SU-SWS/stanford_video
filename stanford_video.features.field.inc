@@ -186,7 +186,7 @@ function stanford_video_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'stanford_video',
       'deleted' => '0',
-      'description' => 'Upload a timestamped caption file (.srt or similar)',
+      'description' => 'Upload a timestamped caption file (.srt, .dfxp, or similar). The captions will only appear for "Stanford Web Video" files (streaming or uploaded).',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -586,7 +586,7 @@ function stanford_video_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'stanford_video',
       'deleted' => '0',
-      'description' => 'Upload an image here to serve as a "keyframe". This image will display when the video is stopped, before it starts playing.',
+      'description' => 'Upload an image here to serve as a "keyframe" or "poster" image. This image will display when the video is stopped, before it starts playing. This will only appear for "Stanford Web Video" files (streaming or uploaded).',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -603,7 +603,7 @@ function stanford_video_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_stanford_video_poster',
-      'label' => 'Poster Image',
+      'label' => 'Image',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
@@ -713,11 +713,11 @@ function stanford_video_field_default_fields() {
   t('Enter the name of your account with the Stanford Video streaming service.');
   t('External Video Embed');
   t('File Name');
-  t('Poster Image');
+  t('Image');
   t('Streaming Server');
-  t('Upload a timestamped caption file (.srt or similar)');
+  t('Upload a timestamped caption file (.srt, .dfxp, or similar). The captions will only appear for "Stanford Web Video" files (streaming or uploaded).');
   t('Upload a video file.');
-  t('Upload an image here to serve as a "keyframe". This image will display when the video is stopped, before it starts playing.');
+  t('Upload an image here to serve as a "keyframe" or "poster" image. This image will display when the video is stopped, before it starts playing. This will only appear for "Stanford Web Video" files (streaming or uploaded).');
   t('Video File');
   t('Video Link');
 

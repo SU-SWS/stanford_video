@@ -1,14 +1,19 @@
-Stanford Video x.x-x.x xxxx-xx-xx
+Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
-Stanford Video 7.x-1.0-alpha4 2013-03-19
+Stanford Web Video 7.x-1.0-alpha5 2013-03-19
+----------------------------------------
+Rearranged fields in Stanford Web Video content type
+Bug fixes
+
+Stanford Web Video 7.x-1.0-alpha4 2013-03-19
 ----------------------------------------
 Added support for local (uploaded) video and embedded video from external providers.
 
-Stanford Video 7.x-1.0-alpha2 2013-03-13
+Stanford Web Video 7.x-1.0-alpha2 2013-03-13
 ----------------------------------------
-Initial working release. Supports RTMP streaming video from the Stanford Video service.
+Initial working release. Supports RTMP streaming video from the Stanford Web Video service.
 
-Stanford Video 7.x-1.0-alpha1 2012-09-17
+Stanford Web Video 7.x-1.0-alpha1 2012-09-17
 ----------------------------------------
 Initial, incomplete release

@@ -111,13 +111,6 @@ function stanford_video_field_formatter_settings_summary($field, $instance, $vie
  */
 function stanford_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
-//  dpm($entity_type);
-//  dpm($entity);
-/*  dpm($field);
-  dpm($instance);
-  dpm($langcode);
-  dpm($items);
-  dpm($display);*/
   if ($display['type'] == 'stanford_video') {
     // Process files for the theme function.
     $files = array();
@@ -228,7 +221,6 @@ function stanford_video_preprocess_jw_player(&$variables) {
   $variables['config']['plugins']['captions-2'] = array();
   $variables['config']['plugins']['captions-2']['state'] = TRUE;
   $variables['config']['plugins']['captions-2']['file'] = $variables['captions'];
- // dpm($variables);
 }
 
 /**
@@ -242,14 +234,9 @@ function stanford_video_form_stanford_video_node_form_alter(&$form, &$form_state
   else {
     $form['#validate'][] = 'stanford_video_node_validate';
   }
-//  dpm($form);
 }
 
 function stanford_video_node_validate($form, &$form_state) {
-/*  if(!empty($form_state)) {
-    dpm($form_state);
-    form_set_error('field_stanford_video_server', 'non-specific error message');
-  }*/
   $concat_link = '';
   if(isset($form_state['rebuild']) && (!$form_state['rebuild'])) {
     if(!empty($form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value']) && !empty($form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'])) {

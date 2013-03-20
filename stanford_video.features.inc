@@ -23,6 +23,13 @@ function stanford_video_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function stanford_video_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function stanford_video_node_info() {

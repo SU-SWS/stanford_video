@@ -55,5 +55,14 @@ function stanford_video_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: embed external web video.
+  $permissions['embed external web video'] = array(
+    'name' => 'embed external web video',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'stanford_video',
+  );
+
   return $permissions;
 }

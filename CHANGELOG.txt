@@ -1,6 +1,12 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+Stanford Web Video 7.x-1.0-alpha6 2013-03-20
+--------------------------------------------
+Added View (stanford_web_videos)
+Fixed HTML5/streaming conflict issue
+Added 320x240 JWPlayer preset
+
 Stanford Web Video 7.x-1.0-alpha5 2013-03-19
 ----------------------------------------
 Rearranged fields in Stanford Web Video content type

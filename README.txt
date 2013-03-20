@@ -7,8 +7,9 @@ Caption Tool (http://captioning.stanford.edu).
 
 INSTALLATION
 ------------
-Install as you would with any other Drupal contributed module. This module does not
-have any Javascript library dependencies, but some of its dependencies do (e.g., fitvids).
+Install as you would with any other Drupal contributed module. This module requires the JWPlayer 
+Javascript library; download it from http://www.longtailvideo.com/jw-player/download/ and place it
+in sites/all/libraries.
 
 USE
 ---
@@ -19,6 +20,10 @@ USE
 ** For more information on creating caption files for videos, visit http://captioning.stanford.edu
 * You also can embed videos from third-party providers (YouTube, Vimeo, etc.) by pasting the embed code into the "External Video Embed" field
 ** This field relies on the "Full HTML" text format. You should only grant access to that text format to trusted users and roles.
+
+VIEWS
+-----
+There is a page View of videos at stanford-web-videos and a block View showing the most recent video.
 
 KNOWN ISSUES
 ------------

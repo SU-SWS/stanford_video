@@ -12,7 +12,7 @@ include_once 'stanford_video.features.inc';
 function stanford_video_field_formatter_info() {
   $formatters = array(
     'stanford_video' => array(
-      'label' => t('Stanford Video'),
+      'label' => t('Stanford Web Video'),
       'field types' => array('file', 'link_field'),
       'settings' => array(
         'jwplayer_preset' => '',
@@ -249,8 +249,16 @@ function stanford_video_preprocess_jw_player(&$variables) {
     //if a URL couldn't be created, set it to the remote URI
     // @todo this can probably be fixed with https://drupal.org/project/filter_protocols; see https://drupal.org/node/685592
     if (empty($variables['file_url'])) {
-      $variables['file_url'] = $variables['file_object']->uri;
+//      $variables['file_url'] = $variables['file_object']->uri;
+      //make it empty?
+      $variables['file_url'] = '';
     }
+  }
+  if(!empty($variables['streamer'])) {
+    $variables['streaming'] = TRUE;
+  }
+  else {
+    $variables['streaming'] = FALSE;
   }
   //streaming variables
   $variables['config']['file'] = $variables['filename'];

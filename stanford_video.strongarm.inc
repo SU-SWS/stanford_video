@@ -56,21 +56,6 @@ function stanford_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'fitvids_customselectors';
-  $strongarm->value = 'rtmp://sv-stream.stanford.edu';
-  $export['fitvids_customselectors'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'fitvids_selectors';
-  $strongarm->value = '.region
-.jwplayer-video';
-  $export['fitvids_selectors'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_stanford_video';
   $strongarm->value = array(
     0 => 'main-menu',

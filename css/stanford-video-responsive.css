@@ -1,22 +1,21 @@
 /* video element */ 
-.jwplayer-video video {
+.jwplayer-video object {
   max-width: 100%;
-  height: auto;
 }
 
 /* Container element */
-.jwplayer-video {
+/*.jwplayer-video {
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
-}
+}*/
 /* Object element */
-.jwplayer-video object {
+/* .jwplayer-video object {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;  
-}
+}*/

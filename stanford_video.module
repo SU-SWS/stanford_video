@@ -194,9 +194,31 @@ function stanford_video_node_validate($form, &$form_state) {
     // only do *this* if the user has set something in the server and filename fields; otherwise, leave the link field blank
     if(!empty($form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value']) && !empty($form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'])) {
       $concat_link = $form_state['values']['field_stanford_video_server'][LANGUAGE_NONE][0]['value'] . $form_state['values']['field_stanford_video_account'][LANGUAGE_NONE][0]['value'] . '/' . $form_state['values']['field_stanford_video_filename'][LANGUAGE_NONE][0]['value'];
+      $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'] = $concat_link;
+    }
+
+    // check if they've entered something in multiple competing fields
+    $message = t('You can only post one video type (Streaming Video, Uploaded Video, or External Embedded Video).');
+    $linkfield = $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'];
+    $filefield = $form_state['values']['field_stanford_video_file'][LANGUAGE_NONE][0]['fid'];
+    $embedfield = $form_state['values']['field_stanford_video_external'][LANGUAGE_NONE][0]['value'];
+    if(!empty($linkfield)) {
+      if(!empty($filefield)) {
+        $field = 'field_stanford_video_filename';
+        form_set_error($field, $message);
+      }
+      if(!empty($embedfield)) {
+        $field = 'field_stanford_video_external';
+        form_set_error($field, $message);        
+      }
+    }
+    elseif(!empty($filefield)) {
+      if(!empty($embedfield)) {
+        $field = 'field_stanford_video_external';
+        form_set_error($field, $message);        
+      }      
     }
   }
-  $form_state['values']['field_stanford_video_link'][LANGUAGE_NONE][0]['url'] = $concat_link;
 }
 
 /**

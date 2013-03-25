@@ -1,6 +1,10 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+Stanford Web Video 7.x-1.0-alpha7 2013-03-25
+--------------------------------------------
+Added help at admin/help/stanford_video
+
 Stanford Web Video 7.x-1.0-alpha6 2013-03-20
 --------------------------------------------
 Added View (stanford_web_videos)

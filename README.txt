@@ -16,7 +16,7 @@ USE
 * Create a new video node at node/add/stanford-video
 * You can upload videos directly (.flv, .mp3, .mp4, .m4v, .webm) and attach captions (.srt, .dfxp, .xml)
 * You also can stream videos from an RTMP streamer; the URL for the Stanford Video streaming server is provided by default
-** For more information on streaming video hosting through Stanford video, visit http://stanfordvideo.stanford.edu/streaming
+** For more information on streaming video hosting through Stanford Video, visit http://stanfordvideo.stanford.edu/streaming
 ** For more information on creating caption files for videos, visit http://captioning.stanford.edu
 * You also can embed videos from third-party providers (YouTube, Vimeo, etc.) by pasting the embed code into the "External Video Embed" field
 ** This field relies on the "Full HTML" text format. You should only grant access to that text format to trusted users and roles.

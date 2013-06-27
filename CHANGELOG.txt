@@ -1,6 +1,11 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+Stanford Web Video 7.x-1.0-beta1 2013-06-27
+-------------------------------------------
+Added instructions for working with videos in subdirectories on Stanford Video
+  streaming service (thanks to Don Davis of Stanford Video)
+
 Stanford Web Video 7.x-1.0-alpha7 2013-03-25
 --------------------------------------------
 Added help at admin/help/stanford_video

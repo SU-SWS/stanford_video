@@ -421,7 +421,7 @@ function stanford_video_field_default_fields() {
       'bundle' => 'stanford_video',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter the name of the file on the streaming server, e.g., "video.mp4" or "video.flv"',
+      'description' => 'Enter the name of the file on the streaming server, e.g., "video.mp4" or "video.flv". If the video file is in a subdirectory, include that as well, e.g., "movies/video.flv"',
       'display' => array(
         'default' => array(
           'label' => 'hidden',

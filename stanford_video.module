@@ -194,6 +194,7 @@ function stanford_video_help($path, $arg) {
       $output .= '<p>' . t('Create a new video node at !addvideo.', array('!addvideo' => l('node/add/stanford-video', 'node/add/stanford-video'))) . '</p>';
       $output .= '<p>' . t('You can upload videos directly (.flv, .mp3, .mp4, .m4v, .webm) and attach captions (.srt, .dfxp, .xml).') . '</p>';
       $output .= '<p>' . t('You also can stream videos from an RTMP streamer; the URL for the Stanford Video streaming server is provided by default.') . '</p>';
+      $output .= '<p>' . t('If you organize your videos into directories and subdirectories on the Stanford Video streaming server, include the directory name(s) in the "File Name" field when creating a video node.') . '</p>';
       $output .= '<p>' . t('For more information on streaming video hosting through Stanford Video, visit !streaming.', array('!streaming' => l('http://stanfordvideo.stanford.edu/streaming', 'http://stanfordvideo.stanford.edu/streaming'))) . '</p>';
       $output .= '<p>' . t('For more information on creating caption files for videos, visit !captioning.', array('!captioning' => l('http://captioning.stanford.edu', 'http://captioning.stanford.edu'))) . '</p>';
       $output .= '<p>' . t('You also can embed videos from third-party providers (YouTube, Vimeo, etc.) by pasting the embed code into the "External Video Embed" field.') . '</p>';

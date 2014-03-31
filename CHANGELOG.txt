@@ -1,7 +1,7 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
-Stanford Web Video 7.x-2.0-alpha1 2014-03-31
+Stanford Web Video 7.x-2.0-alpha2 2014-03-31
 --------------------------------------------
 Updated to be compatible with Features 2.x
 

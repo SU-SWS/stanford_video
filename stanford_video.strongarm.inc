@@ -14,7 +14,7 @@ function stanford_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_stanford_video';
-  $strongarm->value = 'edit-menu';
+  $strongarm->value = 'edit-workflow';
   $export['additional_settings__active_tab_stanford_video'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -165,7 +165,7 @@ function stanford_video_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_stanford_video';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
     1 => 'revision',
   );
   $export['node_options_stanford_video'] = $strongarm;

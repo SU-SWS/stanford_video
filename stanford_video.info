@@ -14,7 +14,6 @@ dependencies[] = jw_player
 dependencies[] = link
 dependencies[] = menu
 dependencies[] = nodeformcols
-dependencies[] = stanford_jumpstart_shortcuts
 dependencies[] = stanford_video
 dependencies[] = strongarm
 dependencies[] = text

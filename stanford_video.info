@@ -57,4 +57,4 @@ features[views_view][] = stanford_web_video_manage
 features[views_view][] = stanford_web_videos
 features_exclude[field_base][body] = body
 features_exclude[dependencies][vpsa_landing_page] = vpsa_landing_page
-project status url = http://drupalfeatures.stanford.edu/fserver/stanford_video/7.x
+project status url = https://github.com/SU-SWS/stanford_video

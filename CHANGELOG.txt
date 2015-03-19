@@ -1,6 +1,16 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+7.x-2.1                           2015-03-19
+--------------------------------------------
+- BASIC-770 | Add manage video view and link to site actions menu
+- Removed shortcuts dependency
+- Removed self dependency and added fe_exclude to body base
+- Removed menu links into jsvpsa
+- Update stanford_video.info
+- Update and rename README.txt to README.md
+
+
 Stanford Web Video 7.x-2.0-alpha2 2014-03-31
 --------------------------------------------
 Updated to be compatible with Features 2.x

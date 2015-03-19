@@ -1,7 +1,7 @@
 #[Stanford Video](https://github.com/SU-SWS/stanford_video)
-##### Version: 7.x-2.0
+##### Version: 7.x-2.1
 
-Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)   
+Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 [Changelog.txt](CHANGELOG.txt)
 
 This module creates a custom content type that uses the JWPlayer video player for playing streaming video hosted by Stanford Video (http://stanfordvideo.stanford.edu/streaming), and integrating captions provided by the Stanford Office of Accessible Education's Caption Tool (http://captioning.stanford.edu).

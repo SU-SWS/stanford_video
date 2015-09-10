@@ -280,7 +280,14 @@ function stanford_video_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-  );
+   );
+  /* Field: Global: View result counter */
+  $handler->display->display_options['fields']['counter']['id'] = 'counter';
+  $handler->display->display_options['fields']['counter']['table'] = 'views';
+  $handler->display->display_options['fields']['counter']['field'] = 'counter';
+  $handler->display->display_options['fields']['counter']['label'] = 'Row';
+  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  $handler->display->display_options['fields']['counter']['reverse'] = 0;
   /* Field: Content: Image */
   $handler->display->display_options['fields']['field_stanford_video_poster']['id'] = 'field_stanford_video_poster';
   $handler->display->display_options['fields']['field_stanford_video_poster']['table'] = 'field_data_field_stanford_video_poster';
@@ -388,6 +395,29 @@ function stanford_video_views_default_views() {
   $handler->display->display_options['filters']['type_1']['value'] = array(
     'stanford_video' => 'stanford_video',
   );
+  /* Filter criterion: Content: Author uid */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'node';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    9 => 0,
+    8 => 0,
+    7 => 0,
+    6 => 0,
+    11 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    10 => 0,
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -399,6 +429,7 @@ function stanford_video_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-manage-content-by-type';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+
   $export['stanford_web_video_manage'] = $view;
 
   $view = new view();

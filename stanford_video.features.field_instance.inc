@@ -168,7 +168,8 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_external'
+  // Exported field_instance:
+  // 'node-stanford_video-field_stanford_video_external'
   $field_instances['node-stanford_video-field_stanford_video_external'] = array(
     'bundle' => 'stanford_video',
     'default_value' => NULL,
@@ -307,7 +308,8 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_filename'
+  // Exported field_instance:
+  // 'node-stanford_video-field_stanford_video_filename'
   $field_instances['node-stanford_video-field_stanford_video_filename'] = array(
     'bundle' => 'stanford_video',
     'default_value' => NULL,
@@ -385,6 +387,7 @@ function stanford_video_field_default_field_instances() {
     'label' => 'Video Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -397,6 +400,7 @@ function stanford_video_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,

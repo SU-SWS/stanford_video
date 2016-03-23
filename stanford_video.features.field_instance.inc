@@ -10,7 +10,7 @@
 function stanford_video_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-stanford_video-body'
+  // Exported field_instance: 'node-stanford_video-body'.
   $field_instances['node-stanford_video-body'] = array(
     'bundle' => 'stanford_video',
     'default_value' => NULL,
@@ -78,7 +78,8 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_account'
+  // Exported field_instance:
+  // 'node-stanford_video-field_stanford_video_account'.
   $field_instances['node-stanford_video-field_stanford_video_account'] = array(
     'bundle' => 'stanford_video',
     'default_value' => NULL,
@@ -117,7 +118,8 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_caption'
+  // Exported field_instance:
+  // 'node-stanford_video-field_stanford_video_caption'.
   $field_instances['node-stanford_video-field_stanford_video_caption'] = array(
     'bundle' => 'stanford_video',
     'deleted' => 0,
@@ -169,7 +171,7 @@ function stanford_video_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-stanford_video-field_stanford_video_external'
+  // 'node-stanford_video-field_stanford_video_external'.
   $field_instances['node-stanford_video-field_stanford_video_external'] = array(
     'bundle' => 'stanford_video',
     'default_value' => NULL,
@@ -243,7 +245,7 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_file'
+  // Exported field_instance: 'node-stanford_video-field_stanford_video_file'.
   $field_instances['node-stanford_video-field_stanford_video_file'] = array(
     'bundle' => 'stanford_video',
     'deleted' => 0,
@@ -309,7 +311,7 @@ function stanford_video_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-stanford_video-field_stanford_video_filename'
+  // 'node-stanford_video-field_stanford_video_filename'.
   $field_instances['node-stanford_video-field_stanford_video_filename'] = array(
     'bundle' => 'stanford_video',
     'default_value' => NULL,
@@ -348,7 +350,7 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_link'
+  // Exported field_instance: 'node-stanford_video-field_stanford_video_link'.
   $field_instances['node-stanford_video-field_stanford_video_link'] = array(
     'bundle' => 'stanford_video',
     'default_value' => NULL,
@@ -416,7 +418,7 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_poster'
+  // Exported field_instance: 'node-stanford_video-field_stanford_video_poster'.
   $field_instances['node-stanford_video-field_stanford_video_poster'] = array(
     'bundle' => 'stanford_video',
     'deleted' => 0,
@@ -472,7 +474,7 @@ function stanford_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_video-field_stanford_video_server'
+  // Exported field_instance: 'node-stanford_video-field_stanford_video_server'.
   $field_instances['node-stanford_video-field_stanford_video_server'] = array(
     'bundle' => 'stanford_video',
     'default_value' => array(

@@ -10,7 +10,7 @@
 function stanford_video_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_stanford_video_account'
+  // Exported field_base: 'field_stanford_video_account'.
   $field_bases['field_stanford_video_account'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function stanford_video_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_stanford_video_caption'
+  // Exported field_base: 'field_stanford_video_caption'.
   $field_bases['field_stanford_video_caption'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -54,7 +54,7 @@ function stanford_video_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_stanford_video_external'
+  // Exported field_base: 'field_stanford_video_external'.
   $field_bases['field_stanford_video_external'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -73,7 +73,7 @@ function stanford_video_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_stanford_video_file'
+  // Exported field_base: 'field_stanford_video_file'.
   $field_bases['field_stanford_video_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -96,7 +96,7 @@ function stanford_video_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_stanford_video_filename'
+  // Exported field_base: 'field_stanford_video_filename'.
   $field_bases['field_stanford_video_filename'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -117,7 +117,7 @@ function stanford_video_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_stanford_video_link'
+  // Exported field_base: 'field_stanford_video_link'.
   $field_bases['field_stanford_video_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -146,7 +146,7 @@ function stanford_video_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_stanford_video_poster'
+  // Exported field_base: 'field_stanford_video_poster'.
   $field_bases['field_stanford_video_poster'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -168,7 +168,7 @@ function stanford_video_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_stanford_video_server'
+  // Exported field_base: 'field_stanford_video_server'.
   $field_bases['field_stanford_video_server'] = array(
     'active' => 1,
     'cardinality' => 1,

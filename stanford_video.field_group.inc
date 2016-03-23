@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function stanford_video_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -35,7 +35,7 @@ function stanford_video_field_group_info() {
       ),
     ),
   );
-  $export['group_stanford_video_external|node|stanford_video|form'] = $field_group;
+  $field_groups['group_stanford_video_external|node|stanford_video|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -65,7 +65,7 @@ function stanford_video_field_group_info() {
       ),
     ),
   );
-  $export['group_stanford_video_streaming|node|stanford_video|form'] = $field_group;
+  $field_groups['group_stanford_video_streaming|node|stanford_video|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -92,7 +92,7 @@ function stanford_video_field_group_info() {
       ),
     ),
   );
-  $export['group_stanford_video_uploaded|node|stanford_video|form'] = $field_group;
+  $field_groups['group_stanford_video_uploaded|node|stanford_video|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -122,7 +122,14 @@ function stanford_video_field_group_info() {
       ),
     ),
   );
-  $export['group_stanford_web_video|node|stanford_video|form'] = $field_group;
+  $field_groups['group_stanford_web_video|node|stanford_video|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('External Embedded Video');
+  t('Stanford Web Video');
+  t('Streaming Video');
+  t('Uploaded Video');
+
+  return $field_groups;
 }

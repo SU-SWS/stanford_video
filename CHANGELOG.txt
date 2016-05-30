@@ -1,6 +1,14 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+7.x-2.2                           2016-05-30
+--------------------------------------------
+- VPSADEV-136: remove features exclude reference to vpsa_landing_page
+- VPSADEV-146: Added author exposed filter and view row counter to manage content view
+- VPSADEV-146: Reinstated VBO Actions
+- Re-export Feature to be compatible with newer versions of Features.
+- jbickar Fixing up the VBO
+
 7.x-2.1                           2015-03-19
 --------------------------------------------
 - BASIC-770 | Add manage video view and link to site actions menu

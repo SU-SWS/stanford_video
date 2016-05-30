@@ -1,5 +1,5 @@
 #[Stanford Video](https://github.com/SU-SWS/stanford_video)
-##### Version: 7.x-2.2
+##### Version: 7.x-2.2-dev
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 [Changelog.txt](CHANGELOG.txt)

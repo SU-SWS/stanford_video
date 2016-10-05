@@ -1,4 +1,4 @@
-name = Stanford Videos
+name = Stanford Video
 description = Feature for embedding videos, capturing related teasers in views, and laying out video content
 core = 7.x
 package = Stanford

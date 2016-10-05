@@ -68,16 +68,6 @@ function stanford_video_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'delete terms in video_categories'.
-  $permissions['delete terms in video_categories'] = array(
-    'name' => 'delete terms in video_categories',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'site owner' => 'site owner',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'ds_switch stanford_video'.
   $permissions['ds_switch stanford_video'] = array(
     'name' => 'ds_switch stanford_video',
@@ -108,16 +98,6 @@ function stanford_video_user_default_permissions() {
       'site owner' => 'site owner',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: 'edit terms in video_categories'.
-  $permissions['edit terms in video_categories'] = array(
-    'name' => 'edit terms in video_categories',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'site owner' => 'site owner',
-    ),
-    'module' => 'taxonomy',
   );
 
   return $permissions;

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Stanford Video feature.
+ * Code for the Stanford Videos feature.
  */
 
 include_once 'stanford_video.features.inc';

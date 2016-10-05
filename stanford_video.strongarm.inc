@@ -13,13 +13,6 @@ function stanford_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'additional_settings__active_tab_stanford_video';
-  $strongarm->value = 'edit-ds-extras';
-  $export['additional_settings__active_tab_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'ant_pattern_stanford_video';
   $strongarm->value = '';
   $export['ant_pattern_stanford_video'] = $strongarm;
@@ -146,13 +139,6 @@ function stanford_video_strongarm() {
   $strongarm->name = 'metatag_enable_node__stanford_video';
   $strongarm->value = TRUE;
   $export['metatag_enable_node__stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'metatag_enable_taxonomy_term__video_categories';
-  $strongarm->value = TRUE;
-  $export['metatag_enable_taxonomy_term__video_categories'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

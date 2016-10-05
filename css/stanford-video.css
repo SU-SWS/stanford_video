@@ -38,7 +38,8 @@
   margin-left: 5px;
 }
 
-.page-node.node-type-stanford-video .content-body .postcard-content .field-name-field-s-video-date, .page-node.node-type-stanford-video .content-body .postcard-content .field-name-field-s-video-speakers- {
+.page-node.node-type-stanford-video .content-body .postcard-content .field-name-field-s-video-date,
+.page-node.node-type-stanford-video .content-body .postcard-content .field-name-field-s-video-speakers- {
   margin-bottom: 2px;
 }
 
@@ -50,7 +51,8 @@
   margin-bottom: 0;
 }
 
-.node-type-stanford-video .postcard-speakers h3, .node-type-stanford-video .postcard-category h3 {
+.node-type-stanford-video .postcard-speakers h3,
+.node-type-stanford-video .postcard-category h3 {
   display: inline-block;
   text-transform: uppercase;
   font-size: 12px;
@@ -62,7 +64,8 @@
   zoom: 1;
 }
 
-.node-type-stanford-video .field-name-field-s-video-speakers-, .node-type-stanford-video .field-name-field-s-video-categories {
+.node-type-stanford-video .field-name-field-s-video-speakers-,
+.node-type-stanford-video .field-name-field-s-video-categories {
   display: inline-block;
 }
 
@@ -123,7 +126,8 @@
   vertical-align: top;
 }
 
-.views-grid-two .views-row-2, .views-grid-two .views-row-4 {
+.views-grid-two .views-row-2,
+.views-grid-two .views-row-4 {
   margin-right: 0;
 }
 
@@ -137,11 +141,14 @@
   }
 }
 
-.view-display-id-page_12_grid_page .field-name-field-s-image-caption, .view-display-id-page_12_grid_page .field-name-field-s-image-credits {
+.view-display-id-page_12_grid_page .field-name-field-s-image-caption,
+.view-display-id-page_12_grid_page .field-name-field-s-image-credits {
   display: none;
 }
 
-.main .view-display-id-page_12_grid_page .border-simple-nowidth img, .main .view-display-id-block_1_featured_video .border-simple-nowidth img, .main .view-display-id-block_1_featured_video .border-simple-nowidth img {
+.main .view-display-id-page_12_grid_page .border-simple-nowidth img,
+.main .view-display-id-block_1_featured_video .border-simple-nowidth img,
+.main .view-display-id-block_1_featured_video .border-simple-nowidth img {
   background-color: transparent;
   box-shadow: none;
   margin-bottom: 1em;

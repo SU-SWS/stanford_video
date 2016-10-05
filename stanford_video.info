@@ -16,6 +16,7 @@ dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = video_embed_field
 dependencies[] = views
+stylesheets[all][] = css/stanford-video.css
 features[context][] = videos_grid
 features[context][] = videos_recent
 features[ctools][] = context:context:3

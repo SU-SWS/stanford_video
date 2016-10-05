@@ -8,7 +8,6 @@ dependencies[] = context
 dependencies[] = date
 dependencies[] = ds
 dependencies[] = ds_extras
-dependencies[] = ds_ui
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = node

@@ -2,6 +2,7 @@
 ##### Version: 7.x-3.0
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama), [josephgknox](https://github.com/josephgknox)
+
 [Changelog.txt](CHANGELOG.txt)
 
 This module delivers a content type, which allows for the embedding of a video directly into a page as well as the inclusion of other items (i.e., quote and speakers). It includes a view with four display options, and also allows for two page layout options: full width (default) and half width.

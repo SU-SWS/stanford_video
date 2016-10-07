@@ -114,6 +114,15 @@
   height: 360px;
 }
 
+@media (max-width: 480px) {
+  .node-type-stanford-video .postcard-video {
+    float: none;
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 
 /* STANFORD VIDEO VIEWS STYLES */
 

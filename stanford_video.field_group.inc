@@ -13,12 +13,12 @@ function stanford_video_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_descriptor_info|node|stanford_video|default';
-  $field_group->group_name = 'group_descriptor_info';
+  $field_group->identifier = 'group_s_descriptor_info|node|stanford_video|default';
+  $field_group->group_name = 'group_s_descriptor_info';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'stanford_video';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_postcard_content';
+  $field_group->parent_name = 'group_s_postcard_content';
   $field_group->data = array(
     'label' => 'Descriptor Info',
     'weight' => '14',
@@ -42,13 +42,13 @@ function stanford_video_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $field_groups['group_descriptor_info|node|stanford_video|default'] = $field_group;
+  $field_groups['group_s_descriptor_info|node|stanford_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_postcard_content|node|stanford_video|default';
-  $field_group->group_name = 'group_postcard_content';
+  $field_group->identifier = 'group_s_postcard_content|node|stanford_video|default';
+  $field_group->group_name = 'group_s_postcard_content';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'stanford_video';
   $field_group->mode = 'default';
@@ -60,7 +60,7 @@ function stanford_video_field_group_info() {
       0 => 'body',
       1 => 'field_s_video_embed',
       2 => 'group_s_postcard_quote',
-      3 => 'group_descriptor_info',
+      3 => 'group_s_descriptor_info',
       4 => 'group_s_files',
     ),
     'format_type' => 'div',
@@ -78,7 +78,7 @@ function stanford_video_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $field_groups['group_postcard_content|node|stanford_video|default'] = $field_group;
+  $field_groups['group_s_postcard_content|node|stanford_video|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -88,7 +88,7 @@ function stanford_video_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'stanford_video';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_descriptor_info';
+  $field_group->parent_name = 'group_s_descriptor_info';
   $field_group->data = array(
     'label' => 'Categories:',
     'weight' => '5',
@@ -186,7 +186,7 @@ function stanford_video_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'stanford_video';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_postcard_content';
+  $field_group->parent_name = 'group_s_postcard_content';
   $field_group->data = array(
     'label' => 'Resources',
     'weight' => '18',
@@ -287,7 +287,7 @@ function stanford_video_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'stanford_video';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_postcard_content';
+  $field_group->parent_name = 'group_s_postcard_content';
   $field_group->data = array(
     'label' => 'Postcard Quote',
     'weight' => '16',
@@ -388,7 +388,7 @@ function stanford_video_field_group_info() {
     'label' => 'Postcard',
     'weight' => '0',
     'children' => array(
-      0 => 'group_postcard_content',
+      0 => 'group_s_postcard_content',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -448,12 +448,12 @@ function stanford_video_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'stanford_video';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_descriptor_info';
+  $field_group->parent_name = 'group_s_descriptor_info';
   $field_group->data = array(
     'label' => 'Speaker(s):',
     'weight' => '3',
     'children' => array(
-      0 => 'field_s_video_speakers_',
+      0 => 'field_s_video_speakers',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -485,7 +485,7 @@ function stanford_video_field_group_info() {
     'label' => 'Speaker(s)',
     'weight' => '2',
     'children' => array(
-      0 => 'field_s_video_speakers_',
+      0 => 'field_s_video_speakers',
     ),
     'format_type' => 'div',
     'format_settings' => array(

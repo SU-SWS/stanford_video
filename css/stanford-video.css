@@ -126,7 +126,7 @@
 
 /* STANFORD VIDEO VIEWS STYLES */
 
-.views-grid-two .views-row {
+.stanford-video-grid-two .views-row {
   box-sizing: border-box;
   display: inline-block;
   margin-right: 3%;
@@ -135,19 +135,13 @@
   vertical-align: top;
 }
 
-.views-grid-two .views-row-2,
-.views-grid-two .views-row-4 {
+.stanford-video-grid-two .views-row-2,
+.stanford-video-grid-two .views-row-4 {
   margin-right: 0;
 }
 
 .view-display-id-attachment .views-row-1 {
   padding-top: 0;
-}
-
-@media (max-width: 480px) {
-  .views-grid-two .views-row {
-    width: 100%;
-  }
 }
 
 .view-display-id-page_12_grid_page .field-name-field-s-image-caption,
@@ -164,7 +158,20 @@
   padding: 0;
 }
 
-.views-grid-four.view-stanford-video .views-row img {
+.stanford-video-grid-four .views-row {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: 1.7%;
+  margin-bottom: 20px;
+  width: 23.3%;
+  vertical-align: top;
+}
+
+.stanford-video-grid-four .grouping .views-row:nth-of-type(4n) {
+  margin-right: 0;
+}
+
+.stanford-video-grid-four.view-stanford-video .views-row img {
   margin-bottom: .5em;
 }
 
@@ -174,4 +181,26 @@
   color: #333333;
   vertical-align: middle;
   padding-right: 6px;
+}
+
+@media (max-width: 979px) {
+  .stanford-video-grid-four .views-row {
+    width: 48.3%;
+  }
+  .stanford-video-grid-four .views-row-even {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 520px) {
+  .stanford-video-grid-four .views-row {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .stanford-video-grid-two .views-row {
+    width: 100%;
+  }
 }

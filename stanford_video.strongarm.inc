@@ -13,58 +13,6 @@ function stanford_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'ant_pattern_stanford_video';
-  $strongarm->value = '';
-  $export['ant_pattern_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_php_stanford_video';
-  $strongarm->value = 0;
-  $export['ant_php_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_stanford_video';
-  $strongarm->value = '0';
-  $export['ant_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'diff_enable_revisions_page_node_stanford_video';
-  $strongarm->value = 1;
-  $export['diff_enable_revisions_page_node_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'diff_show_preview_changes_node_stanford_video';
-  $strongarm->value = 1;
-  $export['diff_show_preview_changes_node_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'diff_view_mode_preview_node_stanford_video';
-  $strongarm->value = 'full';
-  $export['diff_view_mode_preview_node_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ds_extras_view_modes_stanford_video';
-  $strongarm->value = array(
-    0 => 'default',
-    1 => 'stanford_video_half_width',
-  );
-  $export['ds_extras_view_modes_stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__stanford_video';
   $strongarm->value = array(
     'view_modes' => array(
@@ -81,9 +29,6 @@ function stanford_video_strongarm() {
         'custom_settings' => FALSE,
       ),
       'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
       'token' => array(
@@ -136,13 +81,6 @@ function stanford_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'metatag_enable_node__stanford_video';
-  $strongarm->value = TRUE;
-  $export['metatag_enable_node__stanford_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_stanford_video';
   $strongarm->value = array(
     0 => 'status',
@@ -167,13 +105,6 @@ function stanford_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_file_video_pattern';
-  $strongarm->value = '';
-  $export['pathauto_file_video_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_stanford_video_pattern';
   $strongarm->value = 'videos/[node:title]';
   $export['pathauto_node_stanford_video_pattern'] = $strongarm;
@@ -184,13 +115,6 @@ function stanford_video_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_video_categories_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_video_categories_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'save_continue_stanford_video';
-  $strongarm->value = 'Save and add fields';
-  $export['save_continue_stanford_video'] = $strongarm;
 
   return $export;
 }

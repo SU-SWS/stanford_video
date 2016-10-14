@@ -22,7 +22,7 @@ function stanford_video_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'group_s_postcard',
         1 => 'field_s_video_date',
-        2 => 'field_s_video_speakers_',
+        2 => 'field_s_video_speakers',
         3 => 'group_s_speakers',
         4 => 'field_s_video_categories',
         5 => 'group_s_category',
@@ -41,7 +41,7 @@ function stanford_video_ds_layout_settings_info() {
     'fields' => array(
       'group_s_postcard' => 'ds_content',
       'field_s_video_date' => 'ds_content',
-      'field_s_video_speakers_' => 'ds_content',
+      'field_s_video_speakers' => 'ds_content',
       'group_s_speakers' => 'ds_content',
       'field_s_video_categories' => 'ds_content',
       'group_s_category' => 'ds_content',

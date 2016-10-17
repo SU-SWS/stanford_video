@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * stanford_video.context.inc
+ * stanford_video_layouts.context.inc
  */
 
 /**

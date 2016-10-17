@@ -39,7 +39,7 @@
 }
 
 .page-node.node-type-stanford-video .content-body .postcard-content .field-name-field-s-video-date,
-.page-node.node-type-stanford-video .content-body .postcard-content .field-name-field-s-video-speakers- {
+.page-node.node-type-stanford-video .content-body .postcard-content .field-name-field-s-video-speakers {
   margin-bottom: 2px;
 }
 
@@ -64,7 +64,7 @@
   zoom: 1;
 }
 
-.node-type-stanford-video .field-name-field-s-video-speakers-,
+.node-type-stanford-video .field-name-field-s-video-speakers,
 .node-type-stanford-video .field-name-field-s-video-categories {
   display: inline-block;
 }

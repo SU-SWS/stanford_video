@@ -112,9 +112,9 @@ function stanford_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_video_categories_pattern';
+  $strongarm->name = 'pathauto_taxonomy_term_stanford_video_categories_pattern';
   $strongarm->value = '';
-  $export['pathauto_taxonomy_term_video_categories_pattern'] = $strongarm;
+  $export['pathauto_taxonomy_term_stanford_video_categories_pattern'] = $strongarm;
 
   return $export;
 }

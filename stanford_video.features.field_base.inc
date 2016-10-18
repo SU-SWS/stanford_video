@@ -27,7 +27,7 @@ function stanford_video_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'video_categories',
+          'vocabulary' => 'stanford_video_categories',
           'parent' => 0,
         ),
       ),

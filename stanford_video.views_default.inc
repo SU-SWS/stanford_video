@@ -352,7 +352,7 @@ function stanford_video_views_default_views() {
     18 => 0,
   );
   $handler->display->display_options['filters']['field_s_video_categories_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_s_video_categories_tid']['vocabulary'] = 'video_categories';
+  $handler->display->display_options['filters']['field_s_video_categories_tid']['vocabulary'] = 'stanford_video_categories';
   $handler->display->display_options['path'] = 'videos/recent-videos';
   $handler->display->display_options['menu']['title'] = 'Recent Videos';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -854,7 +854,7 @@ function stanford_video_views_default_views() {
     18 => 0,
   );
   $handler->display->display_options['filters']['field_s_video_categories_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_s_video_categories_tid']['vocabulary'] = 'video_categories';
+  $handler->display->display_options['filters']['field_s_video_categories_tid']['vocabulary'] = 'stanford_video_categories';
   $handler->display->display_options['path'] = 'videos/recent-videos/grid';
   $handler->display->display_options['menu']['title'] = 'Recent Videos';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -1173,7 +1173,7 @@ function stanford_video_views_default_views() {
     9 => 0,
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'video_categories';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'stanford_video_categories';
   $handler->display->display_options['filters']['tid']['hierarchy'] = 1;
 
   /* Display: Page */

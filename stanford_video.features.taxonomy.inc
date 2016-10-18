@@ -9,9 +9,9 @@
  */
 function stanford_video_taxonomy_default_vocabularies() {
   return array(
-    'video_categories' => array(
-      'name' => 'Video Categories',
-      'machine_name' => 'video_categories',
+    'stanford_video_categories' => array(
+      'name' => 'Stanford Video Categories',
+      'machine_name' => 'stanford_video_categories',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',

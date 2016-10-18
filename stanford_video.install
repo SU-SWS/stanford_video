@@ -26,6 +26,19 @@ function stanford_video_install() {
 
   watchdog('stanford_video', $message, array(), WATCHDOG_NOTICE);
 
+  // So that the permission can be found.
+  drupal_static_reset();
+  drupal_flush_all_caches();
+
+  // Grant the Administrator role ds_switch stanford_video.
+  $perm = array("ds_switch stanford_video");
+  $role = user_role_load_by_name("Administrator");
+
+  // Only if there is an admin role.
+  if ($role->rid) {
+    user_role_grant_permissions($role->rid, $perm);
+  }
+
 }
 
 /**

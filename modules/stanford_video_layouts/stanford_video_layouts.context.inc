@@ -13,9 +13,9 @@ function stanford_video_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'videos_grid';
+  $context->name = 'stanford_videos_grid';
   $context->description = '';
-  $context->tag = 'Videos';
+  $context->tag = 'Stanford Video';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -40,14 +40,14 @@ function stanford_video_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Videos');
-  $export['videos_grid'] = $context;
+  $export['stanford_videos_grid'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'videos_recent';
+  $context->name = 'stanford_videos_recent';
   $context->description = '';
-  $context->tag = 'Videos';
+  $context->tag = 'Stanford Video';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -72,7 +72,7 @@ function stanford_video_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Videos');
-  $export['videos_recent'] = $context;
+  $export['stanford_videos_recent'] = $context;
 
   return $export;
 }

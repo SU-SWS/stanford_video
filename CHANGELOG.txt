@@ -1,6 +1,10 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+7.x-2.2+6-dev                     2017-01-20
+--------------------------------------------
+- Set content type to published by default
+
 7.x-2.2                           2016-05-30
 --------------------------------------------
 - VPSADEV-136: remove features exclude reference to vpsa_landing_page

@@ -482,14 +482,14 @@ function stanford_video_field_group_info() {
   $field_group->mode = 'stanford_video_half_width';
   $field_group->parent_name = 'group_s_descriptor_info';
   $field_group->data = array(
-    'label' => 'Speaker(s)',
+    'label' => 'Speaker(s):',
     'weight' => '2',
     'children' => array(
       0 => 'field_s_video_speakers',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Speaker(s)',
+      'label' => 'Speaker(s):',
       'instance_settings' => array(
         'id' => '',
         'classes' => 'postcard-speakers',
@@ -514,7 +514,7 @@ function stanford_video_field_group_info() {
   t('Postcard Quote');
   t('Postcard Video');
   t('Resources');
-  t('Speaker(s)');
+  t('Speaker(s):');
   t('Speaker(s):');
 
   return $field_groups;

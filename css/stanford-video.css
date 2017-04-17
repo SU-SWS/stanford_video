@@ -1,7 +1,7 @@
-/* STANFORD VIDEO STYLES */
+/***** STANFORD VIDEO STYLES *****/
 
 
-/* STANFORD VIDEO FULL WIDTH/DEFAULT NODE DISPLAY */
+/*** STANFORD VIDEO FULL WIDTH/DEFAULT NODE DISPLAY ***/
 
 .node-type-stanford-video iframe {
   width: 100%;
@@ -10,8 +10,7 @@
 
 .node-type-stanford-video .postcard-quote {
   font-size: 1.8em;
-  color: #928b81;
-  border-bottom: 2px solid #928b81;
+  border-bottom: 2px solid #333333;
   width: auto;
   max-width: 65%;
   font-style: italic;
@@ -84,7 +83,7 @@
 }
 
 
-/* STANFORD VIDEO HALF WIDTH NODE DISPLAY */
+/*** STANFORD VIDEO HALF WIDTH NODE DISPLAY ***/
 
 .node-type-stanford-video .view-mode-stanford_video_half_width .postcard-quote {
   border-bottom: none;
@@ -124,7 +123,7 @@
 }
 
 
-/* STANFORD VIDEO VIEWS STYLES */
+/*** STANFORD VIDEO VIEWS ***/
 
 .stanford-video-grid-two .views-row {
   box-sizing: border-box;
@@ -203,4 +202,30 @@
   .stanford-video-grid-two .views-row {
     width: 100%;
   }
+}
+
+/*** STANFORD VIDEO DESIGN OPTIONS ***/
+
+/* DARK */
+
+.style-custom-styles-dark .node-type-stanford-video #main-content h1:before,
+.style-custom-styles-dark .view-stanford-video .views-row h3:before {
+  color: #fbfbf9;
+}
+
+.style-custom-styles-dark .node-type-stanford-video .postcard-quote {
+  color: #fbfbf9;
+  border-bottom-color: #fbfbf9;
+}
+
+/* RICH */
+
+.style-custom-styles-rich .node-type-stanford-video #main-content h1:before,
+.style-custom-styles-rich .view-stanford-video .views-row h3:before {
+  color: #3f3c30;
+}
+
+.style-custom-styles-rich .node-type-stanford-video .postcard-quote {
+  color: #3f3c30;
+  border-bottom-color: #3f3c30;
 }

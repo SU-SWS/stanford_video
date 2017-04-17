@@ -208,24 +208,24 @@
 
 /* DARK */
 
-.style-custom-styles-dark .node-type-stanford-video #main-content h1:before,
+.style-custom-styles-dark.node-type-stanford-video #main-content h1:before,
 .style-custom-styles-dark .view-stanford-video .views-row h3:before {
   color: #fbfbf9;
 }
 
-.style-custom-styles-dark .node-type-stanford-video .postcard-quote {
+.style-custom-styles-dark.node-type-stanford-video .postcard-quote {
   color: #fbfbf9;
   border-bottom-color: #fbfbf9;
 }
 
 /* RICH */
 
-.style-custom-styles-rich .node-type-stanford-video #main-content h1:before,
+.style-custom-styles-rich.node-type-stanford-video #main-content h1:before,
 .style-custom-styles-rich .view-stanford-video .views-row h3:before {
   color: #3f3c30;
 }
 
-.style-custom-styles-rich .node-type-stanford-video .postcard-quote {
+.style-custom-styles-rich.node-type-stanford-video .postcard-quote {
   color: #3f3c30;
   border-bottom-color: #3f3c30;
 }

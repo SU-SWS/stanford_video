@@ -1,6 +1,15 @@
 Stanford Web Video x.x-x.x xxxx-xx-xx
 ---------------------------------
 
+7.x-3.0-alpha1                    2018-06-27
+--------------------------------------------
+- Brand new styles and layouts
+- New Video vocabulary
+- New installation requirements on variables
+- Removal of a bunch of deprecated code
+- Removed stanford_jw_player.tpl.php
+- New views
+
 7.x-2.2                           2016-05-30
 --------------------------------------------
 - VPSADEV-136: remove features exclude reference to vpsa_landing_page
